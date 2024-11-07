@@ -1,9 +1,9 @@
 === B Timeline - Create And Display Timeline Contents ===
-Contributors: bplugins, shehabulislam, abuhayat
+Contributors: bplugins, shehabulislam
 Tags: timeline, vertical timeline, horizontal timeline, story line
-Requires at least: 5.5
+Requires at least: 5.4
 Tested up to: 6.6.2
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -74,6 +74,9 @@ e.g.
 
 
 == Changelog ==
+
+= 1.0.7 - 7 Nov, 2024 =
+* Feature: option to show timeline only on top/right/bottom/left 
 
 = 1.0.6 - 3 Aug, 2024 =
 * Fixed: Bar Background

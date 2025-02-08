@@ -1,9 +1,9 @@
 === B Timeline - Create And Display Timeline Contents ===
-Contributors: bplugins, shehabulislam
+Contributors: bplugins, shehabulislam, taninrahman
 Tags: timeline, vertical timeline, horizontal timeline, story line
-Requires at least: 5.4
-Tested up to: 6.6.2
-Stable tag: 1.0.7
+Requires at least: 6.5+
+Tested up to: 6.7
+Stable tag: 1.1.0
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -16,18 +16,25 @@ Easily display your memories or stories on the web.
 == Description ==
 
 B-Timeline is a liteweight WordPress plugin that lets you create and display timeline in any Posts / Pages/ Widget .The plugin is very easy to use and anyone can use the plugin easily without any technical knowledge.
-= Features =
-* Easy to use and light weight
-* JavaScript has a very low loading time
-* User friendly interface
-* ShortCode API enabled which enabled you to embed the Timeline anywhere in the site. 
+
+= Key Features =
+- **Timeline Type**: Easily switch between horizontal and vertical layouts in the default theme.
+- **Start Index**: Set the starting position (left or right) for both horizontal and vertical timelines.
+- **Display Item**: Choose how many items to display in the horizontal timeline for a tailored view.
+- **Insert HTML in timeline title**: Add custom HTML to enhance your timeline titles.
+
+= Pro Features =
+- **Add Powerful Gutenberg Block**: You can use a powerful gutenberg block with a lot of features which is easy to use and customize.
+- **Six Extra Themes**: Access six more professionally designed themes, some themes supporting both horizontal and vertical layouts.
+- **Classic Editor for Descriptions**: Edit timeline descriptions beautifully with the integrated classic editor, providing advanced formatting options.
+- **Customizable Icons**: Add unique icons to your timeline items and style them to create a polished, professional look.
+- **Enhanced Customization Options**: Fine-tune every aspect of your timeline for ultimate design control.
 
 
 **[Live Demo ](https://timeline.bplugins.com/)**
 
 
 = Usage =
-
 
 1. Go to -> B Timeline from Dashboard menu -> Add New.
 2. Configure the B Timeline Options according to your preferences.
@@ -61,6 +68,18 @@ e.g.
 
 == Frequently Asked Questions ==
 
+= Does it work with any WordPress theme? =
+
+Yes, it will work with any standard WordPress theme.
+
+= How many times can I reuse a shortcode? =
+
+You can use unlimited times as you want.
+
+= Where can I get support? =
+
+You can post your questions on the [support forum here](https://wordpress.org/support/plugin/timeline-block-block/)
+
 
 == Screenshots ==
 
@@ -74,6 +93,9 @@ e.g.
 
 
 == Changelog ==
+
+= 1.1.0 - 8 Feb 2025 =
+* Upload v1.1.0: upload a premium version with some incredible features.
 
 = 1.0.7 - 7 Nov, 2024 =
 * Feature: option to show timeline only on top/right/bottom/left 
@@ -95,7 +117,6 @@ e.g.
 * Updated Option Field
 * Fix Border Issues
 * Fix Mirror Issues
-
 
 = 1.0.0 =
 * Initial Release

@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: B Timeline
+ * Plugin Name: B Timeline Charlie
  * Plugin URI:  https://bplugins.com/
  * Description: Easily display interactive Data Timeline.
- * Version: 1.0.7
+ * Version: 1.1.0
  * Author: bPlugins
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -14,9 +14,10 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
 // SOME INITIAL SETUP
 define('BPTL_PLUGIN_DIR', plugin_dir_url(__FILE__));
-define('BPTL_VER', '1.0.7');
+define('BPTL_VER', '1.1.0');
 
 // LOAD PLUGIN TEXT-DOMAIN
 function bptl_load_textdomain()
@@ -39,12 +40,19 @@ function bptl_assets()
 add_action('wp_enqueue_scripts', 'bptl_assets');
 
 // Additional admin style
-function bptl_admin_style()
+function bptl_admin_style($hook)
 {
     wp_register_style('bptl-admin-style', BPTL_PLUGIN_DIR . 'public/assets/css/admin-style.css');
     wp_enqueue_style('bptl-admin-style');
+
+    if ("btimeline_page_dashboard" === $hook) {
+        wp_enqueue_script('bptl-fs-file', BPTL_PLUGIN_DIR . 'public/assets/js/fs.js');
+        wp_enqueue_script('bptl-admin-help', BPTL_PLUGIN_DIR . 'build/admin-help.js', ['react', 'react-dom'], BPTL_VER);
+        wp_enqueue_style('bptl-admin-help', BPTL_PLUGIN_DIR . 'build/admin-help.css', [], BPTL_VER);
+    }
 }
 add_action('admin_enqueue_scripts', 'bptl_admin_style');
+
 
 
 // Timeline Shortcode
@@ -69,7 +77,7 @@ function bptl_shortcode($atts)
                         $timeline_label = $item_data['date_label'] ?? 'January';
                         $timeline_desc = $item_data['item_details'] ?? 'Timeline Description';
                         $timeline_position = $item_data['item_position'] ?? '';
-                        ?>
+                    ?>
 
                         <div class="timeline__item <?php echo esc_attr($timeline_position); ?> fadeIn">
                             <div class="timeline__item__inner">
@@ -88,164 +96,157 @@ function bptl_shortcode($atts)
         </div>
     </div> <!-- End Parent Container -->
     <style>
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__content {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__content {
             background:
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['item_bg']); ?>;
             border:
-                <?php echo esc_attr($bptl_datas['item_border_size']); ?>
-                px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['item_border_size']); ?> px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?>;
 
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__content p {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__content p {
             font-size:
-                <?php echo esc_attr($bptl_datas['item_fontSize']); ?>
-                px;
+                <?php echo esc_attr($bptl_datas['item_fontSize']); ?> px;
             color:
-                <?php echo esc_attr($bptl_datas['item_color']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['item_color']); ?>;
             font-style:
-                <?php echo esc_attr($bptl_datas['item_fontStyle']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['item_fontStyle']); ?>;
             font-weight:
                 <?php echo esc_attr($bptl_datas['item_fontWeight']); ?>
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__content h2 {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__content h2 {
             font-size:
-                <?php echo esc_attr($bptl_datas['label_fontSize']); ?>
-                px;
+                <?php echo esc_attr($bptl_datas['label_fontSize']); ?> px;
             color:
-                <?php echo esc_attr($bptl_datas['label_color']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['label_color']); ?>;
             font-style:
-                <?php echo esc_attr($bptl_datas['label_fontStyle']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['label_fontStyle']); ?>;
             font-weight:
                 <?php echo esc_attr($bptl_datas['lebel_fontWeight']); ?>
         }
 
         /* Timeline Dot */
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item::after {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item::after {
             background-color: '#fff';
-            border: 5px solid
-                <?php echo esc_attr($bptl_datas['bar_dot_color']); ?>
-            ;
+            border: 5px solid <?php echo esc_attr($bptl_datas['bar_dot_color']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline--horizontal .timeline-divider,
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline:not(.timeline--horizontal)::before {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline--horizontal .timeline-divider,
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline:not(.timeline--horizontal)::before {
             background-color:
-                <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>
-            ;
+                <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item--left .timeline__content::before {
-            border-left: 11px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item--left .timeline__content::before {
+            border-left: 11px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item--right .timeline__content::before {
-            border-right: 12px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item--right .timeline__content::before {
+            border-right: 12px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item--left .timeline__content::after {
-            border-left: 11px solid
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item--left .timeline__content::after {
+            border-left: 11px solid <?php echo esc_attr($bptl_datas['item_bg']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item--right .timeline__content::after {
-            border-right: 12px solid
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item--right .timeline__content::after {
+            border-right: 12px solid <?php echo esc_attr($bptl_datas['item_bg']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item.timeline__item--top .timeline__content::before {
-            border-top: 14px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-                !important;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item.timeline__item--top .timeline__content::before {
+            border-top: 14px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?> !important;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item.timeline__item--bottom .timeline__content::before {
-            border-bottom: 14px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-                !important;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item.timeline__item--bottom .timeline__content::before {
+            border-bottom: 14px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?> !important;
             border-top: none;
         }
 
         /* Horizontal view */
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item.timeline__item--top .timeline__content::after {
-            border-top: 12px solid
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item.timeline__item--top .timeline__content::after {
+            border-top: 12px solid <?php echo esc_attr($bptl_datas['item_bg']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline__item.timeline__item--bottom .timeline__content::after {
-            border-bottom: 12px solid
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline__item.timeline__item--bottom .timeline__content::after {
+            border-bottom: 12px solid <?php echo esc_attr($bptl_datas['item_bg']); ?>;
             border-top: none;
         }
 
         /* Mobaile view */
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline--mobile .timeline__item .timeline__content::before {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline--mobile .timeline__item .timeline__content::before {
             border-left: none;
-            border-right: 12px solid
-                <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-            ;
+            border-right: 12px solid <?php echo esc_attr($bptl_datas['item_border_color']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline--mobile .timeline__item .timeline__content::after {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline--mobile .timeline__item .timeline__content::after {
             border-left: none;
-            border-right: 12px solid
-                <?php echo esc_attr($bptl_datas['item_bg']); ?>
-            ;
+            border-right: 12px solid <?php echo esc_attr($bptl_datas['item_bg']); ?>;
         }
 
-        <?php echo '#btimeline-' . esc_attr($id); ?>
-        .timeline-nav-button {
+        <?php echo '#btimeline-' . esc_attr($id); ?>.timeline-nav-button {
             background-color: #fff;
-            border: 2px solid
-                <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>
-            ;
+            border: 2px solid <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>;
         }
     </style>
 
-    <?php
+<?php
     return ob_get_clean();
-
 }
 add_shortcode('btimeline', 'bptl_shortcode');
+
+
+// Plugin activation hook
+register_activation_hook(__FILE__, function () {
+    add_option('bptl_plugin_activated', true);
+});
+
+// Redirect to the custom dashboard after activation
+add_action('admin_init', function () {
+    if (get_option('bptl_plugin_activated', false)) {
+        delete_option('bptl_plugin_activated');
+        if (current_user_can('manage_options')) {
+            wp_safe_redirect(admin_url('edit.php?post_type=btimeline&page=dashboard#/dashboard'));
+            exit;
+        }
+    }
+});
+
+// Add Submenu Page
+function bptl_add_dashboard_submenu()
+{
+    add_submenu_page(
+        'edit.php?post_type=btimeline', // Parent slug (custom post type menu)
+        __('Dashboard', 'b-timeline'), // Page title
+        __('Demo & Help', 'b-timeline'), // Menu title
+        'manage_options',              // Capability
+        'dashboard',         // Menu slug
+        'bptl_dashboard_page'      // Callback function
+    );
+}
+add_action('admin_menu', 'bptl_add_dashboard_submenu');
+
+function bptl_dashboard_page()
+{
+?>
+    <style>
+        #wpcontent {
+            padding-left: 0px !important;
+        }
+    </style>
+    <div id="bplAdminHelpPage" data-version="<?php echo esc_attr(BPTL_VER); ?>">
+    </div>
+    <?php
+}
+
+
 
 
 // Custom post-type
 function bptl_post_type()
 {
     $labels = array(
-        'name' => __('B-Timeline', 'b-timeline'),
+        'name' => __('B-Timelinedf', 'b-timeline'),
         'menu_name' => __('B-Timeline', 'b-timeline'),
         'name_admin_bar' => __('B-Timeline', 'b-timeline'),
         'add_new' => __('Add New', 'b-timeline'),
@@ -392,7 +393,7 @@ function bptl_shortcode_area()
             </div>
         </div>
 
-    <?php endif;
+<?php endif;
 }
 
 // CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
@@ -415,5 +416,3 @@ function bptl_columns_content_only($column_name, $post_ID)
         echo '<div class="bptl_front_shortcode"><input onfocus="this.select();" style="text-align: center; border: none; outline: none; background-color: #1e8cbe; color: #fff; padding: 4px 10px; border-radius: 3px;" value="[btimeline  id=' . "'" . esc_attr($post_ID) . "'" . ']" ></div>';
     }
 }
-
-

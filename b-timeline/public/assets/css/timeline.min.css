@@ -365,7 +365,11 @@
 .content_horizontal_start .timeline-divider {
   top: calc(100% - 15px) !important;
 }
-.content_horizontal_end .timeline-divider {
+.content_horizontal_end.timeline {
+  overflow: visible;
+}
+.content_horizontal_end .timeline-divider,
+.content_horizontal_end .timeline-nav-button {
   top: 15px !important;
 }
 .content_horizontal_end .timeline__items {

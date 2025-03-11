@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: B Timeline Charlie
+ * Plugin Name: B Timeline 
  * Plugin URI:  https://bplugins.com/
  * Description: Easily display interactive Data Timeline.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: bPlugins
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 
 // SOME INITIAL SETUP
 define('BPTL_PLUGIN_DIR', plugin_dir_url(__FILE__));
-define('BPTL_VER', '1.1.0');
+define('BPTL_VER', '1.1.1');
 
 // LOAD PLUGIN TEXT-DOMAIN
 function bptl_load_textdomain()

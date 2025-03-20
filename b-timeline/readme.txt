@@ -3,7 +3,7 @@ Contributors: bplugins, shehabulislam, taninrahman
 Tags: timeline, vertical timeline, horizontal timeline, story line
 Requires at least: 6.5+
 Tested up to: 6.7
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -31,7 +31,7 @@ B-Timeline is a liteweight WordPress plugin that lets you create and display tim
 - **Enhanced Customization Options**: Fine-tune every aspect of your timeline for ultimate design control.
 
 
-**[Live Demo ](https://timeline.bplugins.com/)**
+**[Live Demo ](https://timeline.bplugins.com/)** [Get Pro Version](https://bplugins.com/products/timeline-block/#pricing) 👈
 
 
 = Usage =
@@ -93,6 +93,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Changelog ==
+
+= 1.1.2 - 20 March 2025 =
+* Fixed Issues
 
 = 1.1.1 - 11 March 2025 =
 * Fixed Issues

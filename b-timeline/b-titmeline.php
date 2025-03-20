@@ -3,7 +3,7 @@
  * Plugin Name: B Timeline 
  * Plugin URI:  https://bplugins.com/
  * Description: Easily display interactive Data Timeline.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: bPlugins
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 
 // SOME INITIAL SETUP
 define('BPTL_PLUGIN_DIR', plugin_dir_url(__FILE__));
-define('BPTL_VER', '1.1.1');
+define('BPTL_VER', '1.1.2');
 
 // LOAD PLUGIN TEXT-DOMAIN
 function bptl_load_textdomain()
@@ -80,14 +80,10 @@ function bptl_shortcode($atts)
                     ?>
 
                         <div class="timeline__item <?php echo esc_attr($timeline_position); ?> fadeIn">
-                            <div class="timeline__item__inner">
-                                <div class="timeline__content__wrap">
                                     <div class="timeline__content">
                                         <h2><?php echo esc_html($timeline_label) ?> </h2>
                                         <p><?php echo wp_kses_post($timeline_desc) ?> </p>
                                     </div>
-                                </div>
-                            </div>
                         </div>
 
                     <?php endforeach; ?>

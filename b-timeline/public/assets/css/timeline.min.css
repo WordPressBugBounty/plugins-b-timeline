@@ -149,6 +149,7 @@
 .timeline--horizontal {
   font-size: 0;
   padding: 0 3.125rem;
+  /* overflow: unset; */
   white-space: nowrap;
 }
 
@@ -170,6 +171,8 @@
   -o-transition: all 0.8s;
   transition: all 0.8s;
   will-change: transform;
+  display: flex;
+  gap: 20px;
 }
 
 .timeline--horizontal .timeline__item {

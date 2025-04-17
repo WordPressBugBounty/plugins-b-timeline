@@ -42,7 +42,7 @@ B-Timeline is a liteweight WordPress plugin that lets you create and display tim
 
 Enjoy !!
 
-= ⭐ Checkout our other WordPress Plugins- = 
+= ⭐ Checkout our other WordPress Plugins- =
 
 🔥 **[Html5 Audio Player](https://audioplayerwp.com/)** – Best audio player plugin for WordPress.
 

@@ -68,8 +68,8 @@ CSF::createSection($prefix, array(
     array(
       'id' => 'item_datas',
       'type' => 'group',
-      'title' => __('Timeline Data ', 'b-timeline'),
-      'subtitle' => __('Input Your Timeline Data', 'b-timeline'),
+      'title' =>  'Timeline Data ', 
+      'subtitle' => 'Input Your Timeline Data', 
       'button_title' => 'Add New Data',
       'fields' => array(
         array(

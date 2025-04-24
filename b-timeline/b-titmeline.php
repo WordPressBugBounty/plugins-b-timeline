@@ -3,7 +3,7 @@
  * Plugin Name: B Timeline 
  * Plugin URI:  https://bplugins.com/
  * Description: Easily display interactive Data Timeline.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: bPlugins
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 
 // SOME INITIAL SETUP
 define('BPTL_PLUGIN_DIR', plugin_dir_url(__FILE__));
-define('BPTL_VER', '1.1.2');
+define('BPTL_VER', '1.1.3');
 
 // LOAD PLUGIN TEXT-DOMAIN
 function bptl_load_textdomain()
@@ -40,8 +40,7 @@ function bptl_assets()
 add_action('wp_enqueue_scripts', 'bptl_assets');
 
 // Additional admin style
-function bptl_admin_style($hook)
-{
+function bptl_admin_style($hook) {
     wp_register_style('bptl-admin-style', BPTL_PLUGIN_DIR . 'public/assets/css/admin-style.css');
     wp_enqueue_style('bptl-admin-style');
 
@@ -56,8 +55,7 @@ add_action('admin_enqueue_scripts', 'bptl_admin_style');
 
 
 // Timeline Shortcode
-function bptl_shortcode($atts)
-{
+function bptl_shortcode($atts) {
     extract(shortcode_atts(array(
         'id' => null
     ), $atts));
@@ -209,8 +207,7 @@ add_action('admin_init', function () {
 });
 
 // Add Submenu Page
-function bptl_add_dashboard_submenu()
-{
+function bptl_add_dashboard_submenu() {
     add_submenu_page(
         'edit.php?post_type=btimeline', // Parent slug (custom post type menu)
         __('Dashboard', 'b-timeline'), // Page title
@@ -222,8 +219,7 @@ function bptl_add_dashboard_submenu()
 }
 add_action('admin_menu', 'bptl_add_dashboard_submenu');
 
-function bptl_dashboard_page()
-{
+function bptl_dashboard_page() {
 ?>
     <style>
         #wpcontent {
@@ -239,8 +235,7 @@ function bptl_dashboard_page()
 
 
 // Custom post-type
-function bptl_post_type()
-{
+function bptl_post_type() {
     $labels = array(
         'name' => __('B-Timelinedf', 'b-timeline'),
         'menu_name' => __('B-Timeline', 'b-timeline'),
@@ -304,8 +299,7 @@ if (is_admin()) {
 }
 
 // HIDE everything in PUBLISH metabox except Move to Trash & PUBLISH button
-function bptl_hide_publishing_actions()
-{
+function bptl_hide_publishing_actions() {
     $my_post_type = 'btimeline';
     global $post;
     if ($post->post_type == $my_post_type) {
@@ -326,8 +320,7 @@ add_action('admin_head-post-new.php', 'bptl_hide_publishing_actions');
 // Remove post update massage and link 
 /*-------------------------------------------------------------------------------*/
 
-function bptl_updated_messages($messages)
-{
+function bptl_updated_messages($messages) {
     $messages['btimeline'][1] = __('Timeline Item updated ', 'btimeline');
     return $messages;
 }
@@ -337,8 +330,7 @@ add_filter('post_updated_messages', 'bptl_updated_messages');
 /* Change publish button to save.
 /*-------------------------------------------------------------------------------*/
 add_filter('gettext', 'bptl_change_publish_button', 10, 2);
-function bptl_change_publish_button($translation, $text)
-{
+function bptl_change_publish_button($translation, $text) {
     if ('btimeline' == get_post_type())
         if ($text == 'Publish')
             return 'Save';
@@ -351,8 +343,7 @@ function bptl_change_publish_button($translation, $text)
 /*-------------------------------------------------------------------------------*/
 
 add_filter('admin_footer_text', 'bptl_admin_footer');
-function bptl_admin_footer($text)
-{
+function bptl_admin_footer($text) {
     if ('btimeline' === get_post_type()) {
         $url = 'https://wordpress.org/plugins/b-timeline/reviews/?filter=5#new-post';
         $text = sprintf(__('If you like <strong> B-Timeline </strong> please leave us a <a href="%s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. ', 'b-timeline'), $url);
@@ -365,8 +356,7 @@ function bptl_admin_footer($text)
 /*-------------------------------------------------------------------------------*/
 
 add_action('edit_form_after_title', 'bptl_shortcode_area');
-function bptl_shortcode_area()
-{
+function bptl_shortcode_area() {
     global $post;
     if ($post->post_type == 'btimeline'): ?>
         <div class="bptl_shortcode">
@@ -398,16 +388,14 @@ add_action('manage_btimeline_posts_custom_column', 'bptl_columns_content_only', 
 
 
 // CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
-function bptl_columns_head_only($defaults)
-{
+function bptl_columns_head_only($defaults) {
     unset($defaults['date']);
     $defaults['directors_name'] = 'ShortCode';
     $defaults['date'] = 'Date';
     return $defaults;
 }
 
-function bptl_columns_content_only($column_name, $post_ID)
-{
+function bptl_columns_content_only($column_name, $post_ID) {
     if ($column_name == 'directors_name') {
         echo '<div class="bptl_front_shortcode"><input onfocus="this.select();" style="text-align: center; border: none; outline: none; background-color: #1e8cbe; color: #fff; padding: 4px 10px; border-radius: 3px;" value="[btimeline  id=' . "'" . esc_attr($post_ID) . "'" . ']" ></div>';
     }

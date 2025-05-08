@@ -134,7 +134,7 @@
   z-index: 2;
 }
 
-.timeline__content h2 {
+.timeline__content .title {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0 0 0.625rem;

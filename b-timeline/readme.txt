@@ -2,8 +2,8 @@
 Contributors: bplugins, shehabulislam, taninrahman
 Tags: timeline, vertical timeline, horizontal timeline, story line
 Requires at least: 6.5+
-Tested up to: 6.8
-Stable tag: 1.1.3
+Tested up to: 6.8.1
+Stable tag: 1.1.4
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -93,6 +93,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Changelog ==
+
+= 1.1.4 - 24 April 2025 =
+* Fixed textdomain issues and seo issue
 
 = 1.1.2 - 24 April 2025 =
 * Fixed textdomain issues

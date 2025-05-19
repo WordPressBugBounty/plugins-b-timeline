@@ -31,83 +31,13 @@ jQuery(document).ready(function ($) {
       rtlMode: rtl_mode === "1",
     });
 
-    // const maintainContentPosition = (el, mode, position, labelLocation) => {
-    //   const itemsContainer = el.querySelector(`.timeline__items`);
-    //   const allTimelineItem = el.querySelectorAll(`.timeline__items .timeline__item`);
-    //   const allTimelineNavButton = el.querySelectorAll(`.timeline-nav-button`);
-    //   const timelineDivider = el.querySelector(`.timeline-divider`);
-
-    //   allTimelineItem?.forEach((item, index) => {
-
-    //     if (mode === "horizontal") {
-
-    //       if (position === "end") {
-    //         if (item.classList.contains('timeline__item--top')) {
-    //           item.classList.remove('timeline__item--top');
-    //           item.classList.add('timeline__item--bottom');
-    //         }
-    //         item.style.transform = "translateY(20px)";
-    //         allTimelineNavButton.forEach(item => {
-    //           item.style.top = "20px";
-    //         });
-    //         timelineDivider.style.top = "20px";
-    //         itemsContainer.style.height = `${item.getBoundingClientRect().height + 20}px`;
-    //       } else if (position === "start") {
-    //         if (item.classList.contains('timeline__item--bottom')) {
-    //           item.classList.remove('timeline__item--bottom');
-    //           item.classList.add('timeline__item--top');
-    //         }
-    //         item.style.transform = "unset";
-    //         allTimelineNavButton.forEach(btn => {
-    //           btn.style.top = item.clientHeight;
-    //         });
-    //         timelineDivider.style.top = item.clientHeight;
-    //         itemsContainer.style.height = `${item.getBoundingClientRect().height + 20}px`;
-    //       }
-    //     } else {
-    // 			if (labelLocation === "top") {
-    // 				if (index % 2 === 0) {
-    // 					item.classList.remove('timeline__item--bottom');
-    // 					item.classList.add('timeline__item--top');
-    // 				} else {
-    // 					item.classList.remove('timeline__item--top');
-    // 					item.classList.add('timeline__item--bottom');
-    // 					item.style.transform = item.clientHeight;
-    // 				}
-
-    // 			} else if (labelLocation === "bottom") {
-    // 				if (index % 2 === 0) {
-    // 					item.classList.remove('timeline__item--top');
-    // 					item.classList.add('timeline__item--bottom');
-    // 					item.style.transform = item.clientHeight;
-    // 				} else {
-    // 					item.classList.remove('timeline__item--bottom');
-    // 					item.classList.add('timeline__item--top');
-    // 				}
-    // 			}
-    // 			// Get all elements with class "timeline__item--bottom" and find the highest one
-    // 			const bottomItems = el.querySelectorAll(`.timeline__item--bottom`);
-    //       console.log(bottomItems, "Wildflower");
-    // 			bottomItems.forEach(item => {
-    // 				item.style.height = "fit-content";
-    // 			});
-    // 			const bottomItemHighest = Math.max(...Array.from(bottomItems).map(el => el.getBoundingClientRect().height));
-    // 			const topItems = el.querySelectorAll(`.timeline__item--top`);
-
-    // 			const topItemsHighest = Math.max(...Array.from(topItems).map(el => el.getBoundingClientRect().height));
-    // 			itemsContainer.style.height = `${bottomItemHighest + topItemsHighest}px`;
-
-    // 		}
-
-
-    //   });
-    // }
 
     const maintainContentPosition = (el, mode, position, labelLocation) => {
       const itemsContainer = el.querySelector(`.timeline__items`);
       const allTimelineItem = el.querySelectorAll(`.timeline__items .timeline__item`);
       const allTimelineNavButton = el.querySelectorAll(`.timeline-nav-button`);
       const timelineDivider = el.querySelector(`.timeline-divider`);
+
 
       allTimelineItem?.forEach((item, index) => {
         if (mode === "horizontal") {

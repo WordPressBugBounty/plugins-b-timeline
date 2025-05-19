@@ -210,6 +210,11 @@ class BTimeline {
     
             /* Mobaile view */
             <?php echo '#btimeline-' . esc_attr($id); ?>
+            .timeline--mobile .timeline__wrap .timeline__items {
+                height: auto !important;
+            }
+
+            <?php echo '#btimeline-' . esc_attr($id); ?>
             .timeline--mobile .timeline__item .timeline__content::before {
                 border-left: none;
                 border-right: 12px solid

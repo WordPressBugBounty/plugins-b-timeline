@@ -1,9 +1,9 @@
-=== B Timeline - Create And Display Timeline Contents ===
+=== B Timeline - Vertical and Horizontal Timeline Layouts ===
 Contributors: bplugins, shehabulislam, taninrahman
 Tags: timeline, vertical timeline, horizontal timeline, story line
 Requires at least: 6.5+
 Tested up to: 6.8.1
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -80,6 +80,10 @@ You can use unlimited times as you want.
 
 You can post your questions on the [support forum here](https://wordpress.org/support/plugin/timeline-block-block/)
 
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the B Timeline – Create And Display Timeline Contents plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fc6a0-312a-4aca-b776-c4f5432f294d). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 
 == Screenshots ==
 
@@ -93,6 +97,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Changelog ==
+
+= 1.1.6 - 16 September 2025 =
+* Add Modern Dashboard
 
 = 1.1.5 - 19 May 2025 =
 * Fixed Mobile view issue

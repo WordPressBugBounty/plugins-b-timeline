@@ -52,10 +52,9 @@ class BTimeline {
         wp_enqueue_style('bptl-admin-style');
     
         if ("btimeline_page_dashboard" === $hook) {
-            wp_enqueue_style('bptl-admin-help', BPTL_PLUGIN_DIR . '/build/admin-help.css', [], BPTL_VER);
-            wp_enqueue_script('bptl-admin-help', BPTL_PLUGIN_DIR . '/build/admin-help.js', ['react', 'react-dom'], BPTL_VER);
-            wp_enqueue_script('fs', BPTL_PLUGIN_DIR . 'public/assets/js/fs.js', [], '1');
-            wp_set_script_translations('bptl-admin-help', 'b-timeline', BPTL_PLUGIN_DIR . 'languages');
+            wp_enqueue_script('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.js', ['react', 'react-dom'], BPTL_VER);
+            wp_enqueue_style('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.css', [], BPTL_VER);
+            wp_set_script_translations('bptl-admin-dashboard', 'b-timeline', BPTL_PLUGIN_DIR . 'languages');
         }
     }
 
@@ -257,9 +256,11 @@ class BTimeline {
 
     public static function render_dashboard() {
         ?>
-        <div
-           id="bplAdminHelpPage"
-           data-version="<?php echo esc_attr(BPTL_VER); ?>">
+        <div id="bptlAdminDashboardWrapper"
+            data-info='<?php echo esc_attr( wp_json_encode( [
+                'version' => BPTL_VER,
+                'isPremium' => false,
+            ] ) ); ?>'>
         </div>
         <?php
     }

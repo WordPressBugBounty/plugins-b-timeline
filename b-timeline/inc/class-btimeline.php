@@ -40,11 +40,7 @@ class BTimeline {
     public static function btimeline_scripts() {
         wp_register_script('bptl-timeline', BPTL_PLUGIN_DIR . '/public/assets/js/timeline.min.js', ['jquery'], BPTL_VER, true);
         wp_register_script('bptl-timeline-config', BPTL_PLUGIN_DIR . '/public/assets/js/public.js', ['jquery', 'bptl-timeline'], BPTL_VER, true);
-        wp_enqueue_script('bptl-timeline');
-        wp_enqueue_script('bptl-timeline-config');
-    
         wp_register_style('timeline-style', BPTL_PLUGIN_DIR . '/public/assets/css/timeline.min.css', NULL, 'v0.0.2', 'all');
-        wp_enqueue_style('timeline-style');
     }
 
     public static function admin_style($hook) {
@@ -61,7 +57,7 @@ class BTimeline {
     public static function admin_footer($text) {
         if ('btimeline' === get_post_type()) {
             $url = 'https://wordpress.org/plugins/b-timeline/reviews/?filter=5#new-post';
-            $text = sprintf(__('If you like <strong> B-Timeline </strong> please leave us a <a href="%s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. ', 'b-timeline'), $url);
+            $text = sprintf(__('If you like <strong> Timeline </strong> please leave us a <a href="%s" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. ', 'b-timeline'), $url);
         }
         return $text;
     }
@@ -70,7 +66,14 @@ class BTimeline {
         extract(shortcode_atts(array(
             'id' => null
         ), $atts));
-        ob_start(); ?>
+        
+        wp_enqueue_script('bptl-timeline');
+        wp_enqueue_script('bptl-timeline-config');
+        wp_enqueue_style('timeline-style');
+
+
+        ob_start();
+        ?>
     
         <!-- Timeline Meta Data -->
         <?php $bptl_datas = get_post_meta($id, '_bptimeline_', true); ?>
@@ -270,9 +273,17 @@ class BTimeline {
     }
 
     public static function do_redirect_to_dashboard() {
+        $isTimelineBlockPro = false;
+        if (function_exists('tlgb_fs')) {
+            $isTimelineBlockPro = tlgb_fs()->can_use_premium_code();
+        }
         if (get_option('bptl_do_activation_redirect')) {
             delete_option('bptl_do_activation_redirect');
-            if (!is_network_admin() &&!isset($_GET['activate-multi'])) {
+            if (!is_network_admin() && !isset($_GET['activate-multi'])) {
+                if((is_plugin_active('timeline-block-block/plugin.php') || is_plugin_active('timeline-block-block-pro/plugin.php')) && $isTimelineBlockPro) {
+                    wp_safe_redirect(admin_url('edit.php?post_type=timeline_block&page=tlgb-dashboard#/welcome'));
+                    exit;
+                }
                 wp_safe_redirect(admin_url('edit.php?post_type=btimeline&page=dashboard#/dashboard'));
                 exit;
             }

@@ -13,7 +13,17 @@ jQuery(document).ready(function ($) {
 
     if (!timelineData) return false;
 
-    const { timeline_type, date_location, item_datas, start_item, move_item, visible_items, vertica_trigger, rtl_mode, content_position = "" } = timelineData;
+    const {
+      timeline_type,
+      date_location,
+      item_datas,
+      start_item,
+      move_item,
+      visible_items,
+      vertica_trigger,
+      rtl_mode,
+      content_position = "",
+    } = timelineData;
 
     $(timelineData).removeAttr("data-timeline");
     // console.log({ timeline_type })
@@ -31,13 +41,13 @@ jQuery(document).ready(function ($) {
       rtlMode: rtl_mode === "1",
     });
 
-
     const maintainContentPosition = (el, mode, position, labelLocation) => {
       const itemsContainer = el.querySelector(`.timeline__items`);
-      const allTimelineItem = el.querySelectorAll(`.timeline__items .timeline__item`);
+      const allTimelineItem = el.querySelectorAll(
+        `.timeline__items .timeline__item`
+      );
       const allTimelineNavButton = el.querySelectorAll(`.timeline-nav-button`);
       const timelineDivider = el.querySelector(`.timeline-divider`);
-
 
       allTimelineItem?.forEach((item, index) => {
         if (mode === "horizontal") {
@@ -51,18 +61,53 @@ jQuery(document).ready(function ($) {
               btn.style.top = "20px";
             });
             timelineDivider.style.top = "20px";
-            itemsContainer.style.height = `${item.getBoundingClientRect().height + 20}px`;
+            itemsContainer.style.height = `${
+              item.getBoundingClientRect().height + 20
+            }px`;
+            const inner = item.querySelectorAll(".timeline__item__inner");
+            inner.forEach((inner) => {
+              inner.style.display = "flex";
+              inner.style.alignItems = "start";
+            });
+            const contentWrap = item.querySelectorAll(
+              ".timeline__content__wrap"
+            );
+            contentWrap.forEach((inner) => {
+              inner.style.display = "block";
+              inner.style.width = "fit-content";
+              inner.style.margin = "0 auto";
+              inner.style.maxWidth = "100%";
+            });
           } else if (position === "start") {
             if (item.classList.contains("timeline__item--bottom")) {
               item.classList.remove("timeline__item--bottom");
               item.classList.add("timeline__item--top");
             }
             item.style.transform = "unset";
+
+            const inner = item.querySelectorAll(".timeline__item__inner");
+            inner.forEach((inner) => {
+              inner.style.display = "flex";
+              inner.style.alignItems = "end";
+            });
+            const contentWrap = item.querySelectorAll(
+              ".timeline__content__wrap"
+            );
+            contentWrap.forEach((inner) => {
+              inner.style.display = "block";
+              inner.style.width = "fit-content";
+              inner.style.margin = "0 auto";
+              inner.style.maxWidth = "100%";
+            });
+
             allTimelineNavButton.forEach((btn) => {
-              btn.style.top = item.clientHeight;
+              // btn.style.top = item.clientHeight;
+              btn.style.top = "calc(100% - 15px)";
             });
             timelineDivider.style.top = item.clientHeight;
-            itemsContainer.style.height = `${item.getBoundingClientRect().height + 20}px`;
+            itemsContainer.style.height = `${
+              item.getBoundingClientRect().height + 20
+            }px`;
           } else {
             if (labelLocation == "top") {
               if (index % 2 == 0) {
@@ -75,23 +120,29 @@ jQuery(document).ready(function ($) {
               }
               // Fix: Ensure rendering is complete before measuring heights
               setTimeout(() => {
-                const bottomItems = el.querySelectorAll(".timeline__item--bottom");
+                const bottomItems = el.querySelectorAll(
+                  ".timeline__item--bottom"
+                );
                 bottomItems.forEach((item) => {
                   item.style.height = "fit-content";
                 });
                 const bottomItemHighest = Math.max(
-                  ...Array.from(bottomItems).map((el) => el.getBoundingClientRect().height)
+                  ...Array.from(bottomItems).map(
+                    (el) => el.getBoundingClientRect().height
+                  )
                 );
 
                 const topItems = el.querySelectorAll(".timeline__item--top");
                 const topItemsHighest = Math.max(
-                  ...Array.from(topItems).map((el) => el.getBoundingClientRect().height)
+                  ...Array.from(topItems).map(
+                    (el) => el.getBoundingClientRect().height
+                  )
                 );
 
-                itemsContainer.style.height = `${bottomItemHighest + topItemsHighest + 20}px`;
-
+                itemsContainer.style.height = `${
+                  bottomItemHighest + topItemsHighest + 20
+                }px`;
               }, 50);
-
             } else if (labelLocation == "bottom") {
               if (index % 2 === 0) {
                 item.classList.remove("timeline__item--top");
@@ -109,7 +160,9 @@ jQuery(document).ready(function ($) {
                   item.style.height = "fit-content";
                 });
                 const topItemsHighest = Math.max(
-                  ...Array.from(topItems).map((el) => el.getBoundingClientRect().height)
+                  ...Array.from(topItems).map(
+                    (el) => el.getBoundingClientRect().height
+                  )
                 );
                 topItems.forEach((item) => {
                   item.style.height = `${topItemsHighest}px`;
@@ -120,20 +173,23 @@ jQuery(document).ready(function ($) {
                   btn.style.top = `${topItemsHighest}px`;
                 });
 
-                const bottomItems = el.querySelectorAll(".timeline__item--bottom");
+                const bottomItems = el.querySelectorAll(
+                  ".timeline__item--bottom"
+                );
                 bottomItems.forEach((item) => {
                   item.style.transform = `translateY(${topItemsHighest}px)`;
                 });
                 const bottomItemHighest = Math.max(
-                  ...Array.from(bottomItems).map((el) => el.getBoundingClientRect().height)
+                  ...Array.from(bottomItems).map(
+                    (el) => el.getBoundingClientRect().height
+                  )
                 );
 
-
-                itemsContainer.style.height = `${bottomItemHighest + topItemsHighest}px`;
-
+                itemsContainer.style.height = `${
+                  bottomItemHighest + topItemsHighest
+                }px`;
               }, 50);
             }
-
           }
         }
 
@@ -145,8 +201,7 @@ jQuery(document).ready(function ($) {
               item.classList.remove("timeline__item--right");
               item.classList.add("timeline__item--left");
             });
-          }
-          else if (position == "end") {
+          } else if (position == "end") {
             const leftItems = el.querySelectorAll(".timeline__item--left");
 
             leftItems.forEach((item) => {
@@ -158,7 +213,11 @@ jQuery(document).ready(function ($) {
       });
     };
 
-    maintainContentPosition(timeline_item, timeline_type, content_position, date_location);
+    maintainContentPosition(
+      timeline_item,
+      timeline_type,
+      content_position,
+      date_location
+    );
   });
 });
-

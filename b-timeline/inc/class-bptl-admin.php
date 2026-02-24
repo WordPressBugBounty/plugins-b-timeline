@@ -99,28 +99,35 @@ if(!class_exists('BTimelineAdmin')){
         }
 
         public static function shortcode_area() {
-            global $post;
-            if ($post->post_type == 'btimeline'): ?>
+            global $post; 
+            if ( $post->post_type === 'btimeline' ) : ?>
                 <div class="bptl_shortcode">
-                    <div class="shortcode-heading">
-                        <div class="icon"><span class="dashicons dashicons-shortcode"></span> <?php _e("Timeline", "b-timeline") ?>
-                        </div>
-                        <div class="text"> <a href="https://bplugins.com/support/" target="_blank"><?php _e("Supports", "pdfp") ?></a>
-                        </div>
-                    </div>
-                    <div class="shortcode-left">
-                        <h3><?php _e("Shortcode", "pdfp") ?></h3>
-                        <p><?php _e("Copy and paste this shortcode into your posts, pages and widget:", "b-timeline") ?></p>
-                        <div class="shortcode" selectable>[btimeline id="<?php echo esc_attr($post->ID); ?>"]</div>
-                    </div>
-                    <div class="shortcode-right">
-                        <h3><?php _e("Template Include", "pdfp") ?></h3>
-                        <p><?php _e("Copy and paste the PHP code into your template file:", "b-timeline"); ?></p>
-                        <div class="shortcode">&lt;?php echo do_shortcode('[btimeline id="<?php echo esc_html($post->ID); ?>"]');
-                            ?&gt;</div>
-                    </div>
+                    <code 
+                        class="shortcode_copy" 
+                        data-code="[btimeline id='<?php echo esc_attr( $post->ID ); ?>']">
+                        [btimeline id='<?php echo esc_attr( $post->ID ); ?>']
+                    </code>
+
+                    <p class="shortcode_desc">
+                        <?php echo esc_html__( "Copy this shortcode and paste it into your post, page, or text widget content.", "bptl" ); ?>
+                    </p>
                 </div>
 
+                <script>
+                    document.addEventListener('click', function (e) {
+                        var el = e.target.closest('.shortcode_copy');
+                        if (!el) return;
+
+                        navigator.clipboard.writeText(el.dataset.code).then(function () {
+                            var original = el.textContent;
+                            el.textContent = 'Copied!';
+
+                            setTimeout(function () {
+                                el.textContent = original;
+                            }, 1000);
+                        });
+                    });
+                </script>
             <?php endif;
         }
 
@@ -142,7 +149,8 @@ if(!class_exists('BTimelineAdmin')){
             wp_enqueue_style('bptl-admin-style');
         
             if ("btimeline_page_dashboard" === $hook) {
-                wp_enqueue_script('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.js', ['react', 'react-dom'], BPTL_VER);
+                $asset_file = include BPTL_PLUGIN_PATH . 'build/admin-dashboard.asset.php'; 
+                wp_enqueue_script('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.js', array_merge($asset_file['dependencies'], ['wp-util']), BPTL_VER, true);
                 wp_enqueue_style('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.css', [], BPTL_VER);
                 wp_set_script_translations('bptl-admin-dashboard', 'b-timeline', BPTL_PLUGIN_DIR . 'languages');
             }
@@ -151,8 +159,8 @@ if(!class_exists('BTimelineAdmin')){
         public static function add_help_pages() {
             add_submenu_page(
                 'edit.php?post_type=btimeline', 
-                __('Dashboard', 'b-timeline'), 
-                __('Demo & Help', 'b-timeline'),  
+                __('Help & Demos', 'b-timeline'), 
+                __('Help & Demos', 'b-timeline'),  
                 'manage_options',  
                 'dashboard',   
                 [__CLASS__, 'render_dashboard']   
@@ -163,9 +171,12 @@ if(!class_exists('BTimelineAdmin')){
             ?>
             <div id="bptlAdminDashboardWrapper"
                 data-info='<?php echo esc_attr( wp_json_encode( [
-                    'version' => BPTL_VER,
-                    'isPremium' => false,
-                ] ) ); ?>'>
+					'version' => BPTL_VER,
+					'isPremium' => false,
+					'hasPro' => false,
+					// 'nonce' => wp_create_nonce( 'apbCreatePage' ),
+					// 'licenseActiveNonce' => wp_create_nonce( 'bPlLicenseActivation' )
+				] ) ); ?>'
             </div>
             <?php
         }

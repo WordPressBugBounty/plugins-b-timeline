@@ -3,7 +3,7 @@ Contributors: bplugins, shehabulislam, taninrahman
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
 Requires at least: 6.6+
 Tested up to: 6.9
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -132,6 +132,10 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 
 == Changelog ==
+
+= 2.0.1 - 24 February 2026 =
+* **Update:** Redesigned the full settings layout and improved the admin dashboard interface.
+* **Update:** Optimized files and enhanced overall code readability for better maintainability.
 
 = 2.0.0 - 25 January 2026 = 
 * Fixed horizontal timeline issue

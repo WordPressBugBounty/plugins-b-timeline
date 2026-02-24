@@ -12,9 +12,10 @@ $prefix = '_bptimeline_';
 // Create a metabox
 //
 CSF::createMetabox($prefix, array(
-  'title' => 'Timeline Options',
+  'title' => 'Timeline Configuration',
   'post_type' => 'btimeline',
   'show_restore' => true,
+  'theme' => 'light'
 ));
 
 //
@@ -24,7 +25,6 @@ CSF::createSection($prefix, array(
   'title' => 'Timeline Settings',
   'icon' => 'fas fa-cog',
   'fields' => array(
-
     // Fields
     array(
       'id' => 'timeline_type',
@@ -149,9 +149,14 @@ CSF::createSection($prefix, array(
       'dependency' => array(
         array('timeline_type', '==', 'horizontal'),
       ),
-    ),
+    )
+  )
 
-    // Typography and Style
+));
+CSF::createSection($prefix, array(
+  'title' => 'Styles & Typography',
+  'icon' => 'fas fa-palette',
+  'fields' => array(
     array(
       'type' => 'notice',
       'style' => 'success',
@@ -281,9 +286,6 @@ CSF::createSection($prefix, array(
       'desc' => 'Choose Label Font Color',
       'default' => '#222222'
     ),
-
-
   )
-
 ));
 

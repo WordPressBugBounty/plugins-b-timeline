@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Timeline 
+ * Plugin Name: Timeline
  * Plugin URI:  https://bplugins.com/
  * Description: Easily display interactive Data Timeline.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: bPlugins
  * Author URI: http://bplugins.com
  * License: GPLv3
@@ -15,10 +15,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// SOME INITIAL SETUP
+// SOME INITIAL SETUP 
 define('BPTL_PLUGIN_DIR', plugin_dir_url(__FILE__));
 define('BPTL_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('BPTL_VER', '2.0.1');
+define('BPTL_VER', '2.0.2');
 
 // Load Main Plugin Class
 require_once BPTL_PLUGIN_PATH . 'inc/class-bptl-main.php';

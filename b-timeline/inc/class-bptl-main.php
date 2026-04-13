@@ -19,18 +19,24 @@ if(!class_exists('BTimeline')){
                 add_action('plugins_loaded', [__CLASS__, 'load_dependencies']);
                 add_action('wp_enqueue_scripts', [__CLASS__, 'btimeline_scripts']);
                 add_shortcode('btimeline', [__CLASS__, 'bptl_shortcode']);
-                add_action('admin_notices', [__CLASS__, 'upgrade_notice']);
+                if (function_exists('tlgb_fs') && tlgb_fs()->can_use_premium_code()) {
+                    add_action('admin_notices', [__CLASS__, 'upgrade_notice']);
+                }
         }
     
         public static function init() {
             if (!class_exists('CSF')) {
                 require_once BPTL_PLUGIN_PATH . 'inc/codestar/csf-config.php';
             }
-            require_once BPTL_PLUGIN_PATH . 'inc/class-bptl-options.php';
+            if(!(is_plugin_active('timeline-block-block/plugin.php') && function_exists("tlgb_fs") && tlgb_fs()->can_use_premium_code())) {
+                require_once BPTL_PLUGIN_PATH . 'inc/class-bptl-options.php';
+            }
         }
     
         public static function load_dependencies() {
-            require_once BPTL_PLUGIN_PATH . '/inc/class-bptl-admin.php';
+            if(!is_plugin_active('timeline-block-block/plugin.php') || !(function_exists('tlgb_fs') && tlgb_fs()->can_use_premium_code())){
+                require_once BPTL_PLUGIN_PATH . '/inc/class-bptl-admin.php';
+            }
         }
     
         public static function load_textdomain() {
@@ -274,9 +280,9 @@ if(!class_exists('BTimeline')){
                         </svg></a>
                 </div>
             </div>
-        <?php
+           <?php
 		}
-	}
+	  }
     }
 
 }

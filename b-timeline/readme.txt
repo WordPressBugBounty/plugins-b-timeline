@@ -1,9 +1,9 @@
 === Timeline – Vertical and Horizontal Timeline Layouts ===
-Contributors: bplugins, shehabulislam, taninrahman
+Contributors: bplugins, shehabulislam, taninrahman, prosanta10
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
 Requires at least: 6.6+
 Tested up to: 6.9
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 7.1
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create stunning vertical or horizontal timelines to showcase stories, events, milestones, and memories on any WordPress site — no coding needed.
 
-
+ 
 == Description ==
 
 **The Most User-Friendly Timeline Plugin for WordPress – Loved by Thousands.**
@@ -40,12 +40,13 @@ Upgrade to **Timeline Pro** and access advanced customization, premium themes, a
 **What’s Included in the Pro Version?**
 
 - **Powerful Gutenberg Block**: Build and customize timelines visually inside the Block Editor.
-- **Seven Extra Themes**: Professionally designed templates including dual-orientation themes.
+- **Nine Extra Themes**: Professionally designed templates including dual-orientation themes.
 - **Classic Editor for Descriptions**: Format descriptions beautifully with rich text support.
 - **Customizable Icons**:  Add icons to timeline items and style them exactly how you want.
 - **Advanced Styling Options**:  Add icons to timeline items and style them exactly how you want.
 - **Customizable Icons**:  Add icons to timeline items and style them exactly how you want.
 - **Enhanced Layout Controls**:  Adjust every detail for a polished, professional timeline.
+- **Animation**: Add animation to your timeline items.
 - **Enhanced Customization Options**: Fine-tune every aspect of your timeline for ultimate design control.
 
 
@@ -129,9 +130,15 @@ Please report security bugs found in the source code of the Timeline – Create 
 8. Template 5
 9. Template 6
 10. Template 7
+11. Template 8
+12. Template 9
 
 
 == Changelog ==
+
+= 2.0.2 - 13 April 2026 =
+* **Update:** Premium Version- Add animation options and two new theme.
+* **Fixed:** Responsive issue.
 
 = 2.0.1 - 24 February 2026 =
 * **Update:** Redesigned the full settings layout and improved the admin dashboard interface.

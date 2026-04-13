@@ -26,7 +26,7 @@ if(!class_exists('BTimelineAdmin')){
         public static function register_post_type() {
 
             $isTimelineBlockPro = true;
-            if (function_exists('tlgb_fs') && tlgb_fs()->can_use_premium_code()) {
+            if (function_exists('tlgbIsPremium') && !tlgbIsPremium()) {
                 $isTimelineBlockPro = false;
             }
 
@@ -40,7 +40,7 @@ if(!class_exists('BTimelineAdmin')){
                 'new_item' => __('New Timeline ', 'b-timeline'),
                 'edit_item' => __('Edit Timeline ', 'b-timeline'),
                 'view_item' => __('View Timeline ', 'b-timeline'),
-                'all_items' =>__('All Timeline', 'b-timeline'),
+                'all_items' => ((is_plugin_active('timeline-block-block/plugin.php') || is_plugin_active('timeline-block-block-pro/plugin.php')) && $isTimelineBlockPro) ? __('Timeline  - Lagacy', 'b-timeline') :  __('All Timeline', 'b-timeline'),
                 'not_found' => __('Sorry, we couldn\'t find the Feed you are looking for.')
             );
             $args = array(
@@ -48,7 +48,7 @@ if(!class_exists('BTimelineAdmin')){
                 'description' => __('Timeline Options.', 'b-timeline'),
                 'public' => false,
                 'show_ui' => true,
-                'show_in_menu' => true,
+                'show_in_menu' =>  ((is_plugin_active('timeline-block-block/plugin.php') || is_plugin_active('timeline-block-block-pro/plugin.php')) && $isTimelineBlockPro) ? 'edit.php?post_type=timeline_block' : true,
                 'menu_icon' => BPTL_PLUGIN_DIR . '/public/assets/images/timeline.png',
                 'query_var' => true,
                 'rewrite' => array('slug' => 'b-timeline'),
@@ -176,7 +176,7 @@ if(!class_exists('BTimelineAdmin')){
 					'hasPro' => false,
 					// 'nonce' => wp_create_nonce( 'apbCreatePage' ),
 					// 'licenseActiveNonce' => wp_create_nonce( 'bPlLicenseActivation' )
-				] ) ); ?>'
+				] ) ); ?>'>
             </div>
             <?php
         }

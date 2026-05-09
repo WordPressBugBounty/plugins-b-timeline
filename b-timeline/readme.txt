@@ -1,7 +1,7 @@
 === Timeline – Vertical and Horizontal Timeline Layouts ===
 Contributors: bplugins, shehabulislam, taninrahman, prosanta10
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
-Requires at least: 6.6+
+Requires at least: 6.2
 Tested up to: 6.9
 Stable tag: 2.0.2
 Requires PHP: 7.1
@@ -69,8 +69,9 @@ That’s it — your timeline is live!
 Personal milestones & life stories
 
 * Company history timeline
+* Personal milestones and life stories  
 * Event & conference schedules
-* Project roadmap
+* Product roadmaps and development progress  
 * Product evolution
 * Educational course chapters
 * Portfolio storytelling
@@ -207,4 +208,3 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 = 2.0.0 - 25 January 2026 = 
 * Improve timeline functionality & perfomance.
-

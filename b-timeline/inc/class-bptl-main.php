@@ -35,6 +35,8 @@ if(!class_exists('BTimeline')){
     
         public static function load_dependencies() {
             if(!is_plugin_active('timeline-block-block/plugin.php') || !(function_exists('tlgb_fs') && tlgb_fs()->can_use_premium_code())){
+                require_once BPTL_PLUGIN_PATH . '/inc/class-bptl-settings.php';
+                require_once BPTL_PLUGIN_PATH . '/inc/class-bptl-ajax.php';
                 require_once BPTL_PLUGIN_PATH . '/inc/class-bptl-admin.php';
             }
         }
@@ -46,7 +48,7 @@ if(!class_exists('BTimeline')){
         public static function btimeline_scripts() {
             wp_register_script('bptl-timeline', BPTL_PLUGIN_DIR . '/public/assets/js/timeline.min.js', ['jquery'], BPTL_VER, true);
             wp_register_script('bptl-timeline-config', BPTL_PLUGIN_DIR . '/public/assets/js/public.js', ['jquery', 'bptl-timeline'], BPTL_VER, true);
-            wp_register_style('timeline-style', BPTL_PLUGIN_DIR . '/public/assets/css/timeline.min.css', NULL, 'v0.0.2', 'all');
+            wp_register_style('timeline-style', BPTL_PLUGIN_DIR . '/public/assets/css/timeline.min.css', NULL, BPTL_VER, 'all');
         }
     
         public static function bptl_shortcode($atts) {
@@ -57,21 +59,65 @@ if(!class_exists('BTimeline')){
             wp_enqueue_script('bptl-timeline');
             wp_enqueue_script('bptl-timeline-config');
             wp_enqueue_style('timeline-style');
-    
-    
+
+            $bptl_datas = get_post_meta($id, '_bptimeline_', true);
+            return self::bptl_render_timeline_from_data($bptl_datas, $id);
+        }
+
+        public static function bptl_render_timeline_from_data($bptl_datas, $id = null) {
+            if (!$id) {
+                $id = 'preview-' . rand(1000, 9999);
+            }
+
+            if (!is_array($bptl_datas)) {
+                $bptl_datas = [];
+            }
+
+            $item_datas = isset($bptl_datas['item_datas']) && is_array($bptl_datas['item_datas']) ? $bptl_datas['item_datas'] : [];
+
+            if (empty($item_datas)) {
+                ob_start();
+                ?>
+                <div style="text-align: center; padding: 50px 20px; color: #646970; font-size: 14px; background: #ffffff; border: 1px dashed #c3c4c7; border-radius: 6px; margin: 10px 0;">
+                    <span class="dashicons dashicons-calendar-alt" style="font-size: 36px; width: 36px; height: 36px; color: #a7aaad; margin-bottom: 10px;"></span>
+                    <p style="margin: 0; font-size: 15px; font-weight: 600; color: #2c3338;">No Timeline Data Found</p>
+                    <p style="margin: 6px 0 0; font-size: 13px; color: #646970;">Please add data under <strong>"Timeline Settings &rarr; Timeline Data"</strong> to see live preview.</p>
+                </div>
+                <?php
+                return ob_get_clean();
+            }
+
+            $item_bg = !empty($bptl_datas['item_bg']) ? $bptl_datas['item_bg'] : '#ffffff';
+            $item_border_size = isset($bptl_datas['item_border_size']) ? $bptl_datas['item_border_size'] : '1';
+            $item_border_color = !empty($bptl_datas['item_border_color']) ? $bptl_datas['item_border_color'] : '#cccccc';
+            $item_fontSize = !empty($bptl_datas['item_fontSize']) ? $bptl_datas['item_fontSize'] : '14';
+            $item_color = !empty($bptl_datas['item_color']) ? $bptl_datas['item_color'] : '#333333';
+            $item_fontStyle = !empty($bptl_datas['item_fontStyle']) ? $bptl_datas['item_fontStyle'] : 'normal';
+            $item_fontWeight = !empty($bptl_datas['item_fontWeight']) ? $bptl_datas['item_fontWeight'] : 'normal';
+            $label_fontSize = !empty($bptl_datas['label_fontSize']) ? $bptl_datas['label_fontSize'] : '16';
+            $label_color = !empty($bptl_datas['label_color']) ? $bptl_datas['label_color'] : '#222222';
+            $label_fontStyle = !empty($bptl_datas['label_fontStyle']) ? $bptl_datas['label_fontStyle'] : 'normal';
+            $label_fontWeight = !empty($bptl_datas['label_fontWeight']) ? $bptl_datas['label_fontWeight'] : (!empty($bptl_datas['lebel_fontWeight']) ? $bptl_datas['lebel_fontWeight'] : 'normal');
+            $bar_dot_color = !empty($bptl_datas['bar_dot_color']) ? $bptl_datas['bar_dot_color'] : '#dddddd';
+            $bar_bg_color = !empty($bptl_datas['bar_bg_color']) ? $bptl_datas['bar_bg_color'] : '#dddddd';
+
+            // The same shortcode can be placed on a page more than once, so the
+            // wrapper id has to stay unique or the per-timeline CSS below would
+            // be attached to duplicated ids.
+            static $render_count = array();
+            $render_count[$id] = isset($render_count[$id]) ? $render_count[$id] + 1 : 1;
+            $uid = 'btimeline-' . $id . ($render_count[$id] > 1 ? '-' . $render_count[$id] : '');
+
             ob_start();
             ?>
-        
-            <!-- Timeline Meta Data -->
-            <?php $bptl_datas = get_post_meta($id, '_bptimeline_', true); ?>
-        
+
             <!-- Start Parent Container -->
-            <div id="btimeline-<?php echo esc_attr($id); ?>">
+            <div id="<?php echo esc_attr($uid); ?>">
                 <div class="timeline bp_titleline" data-timeline='<?php echo esc_attr(wp_json_encode($bptl_datas)); ?>'>
                     <div class="timeline__wrap">
                         <div class="timeline__items">
         
-                            <?php foreach ($bptl_datas['item_datas'] as $item_data):
+                            <?php foreach ($item_datas as $item_data):
         
                                 $timeline_label = $item_data['date_label'] ?? 'January';
                                 $timeline_desc = $item_data['item_details'] ?? 'Timeline Description';
@@ -95,142 +141,166 @@ if(!class_exists('BTimeline')){
                 </div>
             </div> <!-- End Parent Container -->
             <style>
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__content {
-                    background:
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
-                    ;
-                    border:
-                        <?php echo esc_attr($bptl_datas['item_border_size']); ?>
-                        px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
-                    ;
-        
+                    background: <?php echo esc_attr($item_bg); ?>;
+                    border: <?php echo esc_attr($item_border_size); ?>px solid <?php echo esc_attr($item_border_color); ?>;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__content .title{
-                    font-size: <?php echo esc_attr($bptl_datas['item_fontSize']); ?>px;
-                    color: <?php echo esc_attr($bptl_datas['item_color']); ?>;
-                    font-style: <?php echo esc_attr($bptl_datas['item_fontStyle']); ?>;
-                    font-weight: <?php echo esc_attr($bptl_datas['item_fontWeight']); ?>
+                    font-size: <?php echo esc_attr($item_fontSize); ?>px;
+                    color: <?php echo esc_attr($item_color); ?>;
+                    font-style: <?php echo esc_attr($item_fontStyle); ?>;
+                    font-weight: <?php echo esc_attr($item_fontWeight); ?>;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__content p {
-                    font-size: <?php echo esc_attr($bptl_datas['label_fontSize']); ?> px;
-                    color: <?php echo esc_attr($bptl_datas['label_color']); ?>;
-                    font-style: <?php echo esc_attr($bptl_datas['label_fontStyle']); ?>;
-                    font-weight: <?php echo esc_attr($bptl_datas['lebel_fontWeight']); ?>
+                    font-size: <?php echo esc_attr($label_fontSize); ?>px;
+                    color: <?php echo esc_attr($label_color); ?>;
+                    font-style: <?php echo esc_attr($label_fontStyle); ?>;
+                    font-weight: <?php echo esc_attr($label_fontWeight); ?>;
                 }
         
                 /* Timeline Dot */
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item::after {
-                    background-color: '#fff';
-                    border: 5px solid <?php echo esc_attr($bptl_datas['bar_dot_color']); ?>;
+                    background-color: #ffffff;
+                    border: 5px solid <?php echo esc_attr($bar_dot_color); ?>;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline--horizontal .timeline-divider,
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline:not(.timeline--horizontal)::before {
-                    background-color: <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>;
+                    background-color: <?php echo esc_attr($bar_bg_color); ?>;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item--left .timeline__content::before {
                     border-left: 11px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
+                        <?php echo esc_attr($item_border_color); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item--right .timeline__content::before {
                     border-right: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
+                        <?php echo esc_attr($item_border_color); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item--left .timeline__content::after {
                     border-left: 11px solid
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
+                        <?php echo esc_attr($item_bg); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item--right .timeline__content::after {
                     border-right: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
+                        <?php echo esc_attr($item_bg); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item.timeline__item--top .timeline__content::before {
                     border-top: 14px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
+                        <?php echo esc_attr($item_border_color); ?>
                         !important;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item.timeline__item--bottom .timeline__content::before {
                     border-bottom: 14px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
+                        <?php echo esc_attr($item_border_color); ?>
                         !important;
                     border-top: none;
                 }
         
                 /* Horizontal view */
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item.timeline__item--top .timeline__content::after {
                     border-top: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
+                        <?php echo esc_attr($item_bg); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline__item.timeline__item--bottom .timeline__content::after {
                     border-bottom: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
+                        <?php echo esc_attr($item_bg); ?>
                     ;
                     border-top: none;
                 }
         
-                /* Mobaile view */
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                /* Mobile view */
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline--mobile .timeline__wrap .timeline__items {
                     height: auto !important;
                 }
     
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline--mobile .timeline__item .timeline__content::before {
                     border-left: none;
                     border-right: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_border_color']); ?>
+                        <?php echo esc_attr($item_border_color); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline--mobile .timeline__item .timeline__content::after {
                     border-left: none;
                     border-right: 12px solid
-                        <?php echo esc_attr($bptl_datas['item_bg']); ?>
+                        <?php echo esc_attr($item_bg); ?>
                     ;
                 }
         
-                <?php echo '#btimeline-' . esc_attr($id); ?>
+                <?php echo '#' . esc_attr($uid); ?>
                 .timeline-nav-button {
                     background-color: #fff;
                     border: 2px solid
-                        <?php echo esc_attr($bptl_datas['bar_bg_color']); ?>
+                        <?php echo esc_attr($bar_bg_color); ?>
                     ;
+                }
+
+                /*
+                 * Mobile view, driven by the breakpoint instead of the
+                 * `.timeline--mobile` class, so the colours still match when a
+                 * horizontal timeline is stacked on a small screen.
+                 */
+                @media only screen and (max-width: 600px) {
+                    <?php echo '#' . esc_attr($uid); ?>
+                    .timeline::before {
+                        background-color: <?php echo esc_attr($bar_bg_color); ?>;
+                    }
+
+                    <?php echo '#' . esc_attr($uid); ?>
+                    .timeline .timeline__item .timeline__content::before {
+                        border-left: none !important;
+                        border-right: 12px solid
+                            <?php echo esc_attr($item_border_color); ?>
+                            !important;
+                        border-bottom: 12px solid transparent !important;
+                        border-top: 12px solid transparent !important;
+                    }
+
+                    <?php echo '#' . esc_attr($uid); ?>
+                    .timeline .timeline__item .timeline__content::after {
+                        border-left: none !important;
+                        border-right: 10px solid
+                            <?php echo esc_attr($item_bg); ?>
+                            !important;
+                        border-bottom: 10px solid transparent !important;
+                        border-top: 10px solid transparent !important;
+                    }
                 }
             </style>
         
             <?php
             return ob_get_clean();
-        
         }
     
         public static function activation_redirect() {

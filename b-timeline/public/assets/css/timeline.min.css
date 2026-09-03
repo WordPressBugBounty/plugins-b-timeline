@@ -146,6 +146,29 @@
   margin-bottom: 10px;
 }
 
+/*
+ * A long unbreakable string (a pasted URL, a file path, a hashtag) has no wrap
+ * opportunity of its own and would otherwise run straight out of the card on
+ * every screen size. `anywhere` is used rather than `break-word` because it
+ * also shrinks the min-content width, which is what the horizontal layout
+ * measures its table cells with.
+ */
+.timeline__content,
+.timeline__content .title,
+.timeline__content * {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.timeline__content img,
+.timeline__content iframe,
+.timeline__content video,
+.timeline__content table {
+  max-width: 100%;
+}
+
 .timeline--horizontal {
   font-size: 0;
   padding: 0 3.125rem;
@@ -447,4 +470,128 @@
 
 .content_horizontal_end .timeline__item {
   transform: matrix(1, 0, 0, 1, 0, 15) !important;
+}
+/* ---------------------------------------------------------------------------
+   Mobile layout (<= 600px)
+   The JS adds `.timeline--mobile` at this same breakpoint, but the rules below
+   make the stacked layout work on their own too, so a JS failure can no longer
+   leave a timeline rendered with the desktop 50% columns.
+--------------------------------------------------------------------------- */
+@media only screen and (max-width: 600px) {
+  .timeline,
+  .timeline.timeline--horizontal {
+    overflow: hidden;
+    padding: 0;
+    white-space: normal;
+    font-size: 1rem;
+  }
+
+  /* The vertical bar: `.timeline:not(.timeline--horizontal):before` never
+     matches a horizontal timeline, so it needs declaring for both cases. */
+  .timeline:before,
+  .timeline.timeline--horizontal:before {
+    background-color: #ddd;
+    bottom: 0;
+    content: "";
+    left: 10px !important;
+    margin: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 4px;
+    z-index: 1;
+  }
+
+  .timeline .timeline__wrap {
+    overflow: visible;
+  }
+
+  .timeline .timeline__items {
+    display: block !important;
+    gap: 0 !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+    transition: none !important;
+    width: auto !important;
+  }
+
+  .timeline .timeline__item,
+  .timeline .timeline__item--left,
+  .timeline .timeline__item--right,
+  .timeline .timeline__item--top,
+  .timeline .timeline__item--bottom {
+    display: block !important;
+    height: auto !important;
+    left: 0 !important;
+    padding: 0.625rem 0 0.625rem 40px !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -ms-transform: none !important;
+    vertical-align: top;
+    width: 100% !important;
+  }
+
+  /* Dot */
+  .timeline .timeline__item:after {
+    left: 2px !important;
+    right: auto !important;
+    margin: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
+  }
+
+  .timeline .timeline__item .timeline__item__inner {
+    display: block !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .timeline .timeline__item .timeline__content__wrap {
+    display: block !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    vertical-align: top;
+    width: 100% !important;
+  }
+
+  /* Arrow always points left, towards the bar */
+  .timeline .timeline__item .timeline__content:before {
+    border-bottom: 12px solid transparent !important;
+    border-left: none !important;
+    border-right: 12px solid #ccc !important;
+    border-top: 12px solid transparent !important;
+    bottom: auto !important;
+    left: -12px !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
+  }
+
+  .timeline .timeline__item .timeline__content:after {
+    border-bottom: 10px solid transparent !important;
+    border-left: none !important;
+    border-right: 10px solid #fff !important;
+    border-top: 10px solid transparent !important;
+    bottom: auto !important;
+    left: -10px !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
+  }
+
+  /* Horizontal-only chrome has no place in the stacked layout */
+  .timeline .timeline-divider,
+  .timeline .timeline-nav-button {
+    display: none !important;
+  }
+
 }

@@ -1,22 +1,25 @@
-# Copyright (C) 2025 bPlugins
+# Copyright (C) 2026 bPlugins
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: B Timeline 1.1.5\n"
+"Project-Id-Version: Timeline 2.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/b-timeline\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-19T09:08:29+00:00\n"
+"POT-Creation-Date: 2026-08-31T11:27:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: b-timeline\n"
 
 #. Plugin Name of the plugin
 #: b-titmeline.php
-msgid "B Timeline"
+#: inc/class-bptl-admin.php:35
+#: inc/class-bptl-admin.php:36
+#: inc/class-bptl-admin.php:37
+msgid "Timeline"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -39,57 +42,115 @@ msgstr ""
 msgid "http://bplugins.com"
 msgstr ""
 
-#: inc/BTimeline_Admin.php:21
-#: inc/BTimeline_Admin.php:22
-#: inc/BTimeline_Admin.php:23
-#: inc/BTimeline_Admin.php:92
-msgid "B-Timeline"
+#: inc/class-bptl-admin.php:36
+#: inc/class-bptl-admin.php:43
+msgid "Timeline  - Lagacy"
 msgstr ""
 
-#: inc/BTimeline_Admin.php:24
+#: inc/class-bptl-admin.php:38
 msgid "Add New"
 msgstr ""
 
-#: inc/BTimeline_Admin.php:25
+#: inc/class-bptl-admin.php:39
 msgid "Add New "
 msgstr ""
 
-#: inc/BTimeline_Admin.php:26
+#: inc/class-bptl-admin.php:40
 msgid "New Timeline "
 msgstr ""
 
-#: inc/BTimeline_Admin.php:27
+#: inc/class-bptl-admin.php:41
 msgid "Edit Timeline "
 msgstr ""
 
-#: inc/BTimeline_Admin.php:28
+#: inc/class-bptl-admin.php:42
 msgid "View Timeline "
 msgstr ""
 
-#: inc/BTimeline_Admin.php:29
+#: inc/class-bptl-admin.php:43
 msgid "All Timeline"
 msgstr ""
 
-#: inc/BTimeline_Admin.php:34
-msgid "B Timeline Options."
+#: inc/class-bptl-admin.php:48
+msgid "Timeline Options."
 msgstr ""
 
-#: inc/BTimeline_Admin.php:99
-msgid "Copy and paste this shortcode into your posts, pages and widget:"
+#: inc/class-bptl-admin.php:164
+#: inc/class-bptl-admin.php:165
+msgid "Help & Demos"
 msgstr ""
 
-#: inc/BTimeline_Admin.php:104
-msgid "Copy and paste the PHP code into your template file:"
+#: inc/class-bptl-admin.php:195
+#, php-format
+msgid "If you like <strong> Timeline </strong> please leave us a <a href=\"%s\" target=\"_blank\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. "
 msgstr ""
 
-#: inc/class-btimeline.php:65
-msgid "If you like <strong> B-Timeline </strong> please leave us a <a href=\"%s\" target=\"_blank\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. "
+#: inc/class-bptl-ajax.php:34
+msgid "Invalid Request"
 msgstr ""
 
-#: inc/class-btimeline.php:250
-msgid "Dashboard"
+#: inc/class-bptl-ajax.php:38
+#: inc/class-bptl-ajax.php:63
+msgid "Permission denied"
 msgstr ""
 
-#: inc/class-btimeline.php:251
-msgid "Demo & Help"
+#: inc/class-bptl-options.php:712
+msgid "Unsaved settings are shown here as visitors would see them. Nothing is saved until you press Update."
+msgstr ""
+
+#: inc/class-bptl-settings.php:38
+msgid "Permission denied."
+msgstr ""
+
+#: inc/class-bptl-settings.php:48
+msgid "All plugin data will be deleted when uninstalled."
+msgstr ""
+
+#: inc/class-bptl-settings.php:49
+msgid "Plugin data will be preserved when uninstalled."
+msgstr ""
+
+#: admin/Components/Settings.js:20
+#: build/admin-dashboard.js:1
+msgid "Failed to save setting."
+msgstr ""
+
+#: admin/Components/Settings.js:30
+#: build/admin-dashboard.js:1
+msgid "Are you sure? This will permanently delete all timeline shortcode posts when the plugin is uninstalled."
+msgstr ""
+
+#: admin/Components/Settings.js:41
+#: build/admin-dashboard.js:1
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: admin/Components/Settings.js:43
+#: build/admin-dashboard.js:1
+msgid "When enabled, all plugin data will be permanently deleted when you uninstall (delete) the plugin. This includes:"
+msgstr ""
+
+#: admin/Components/Settings.js:46
+#: build/admin-dashboard.js:1
+msgid "All timeline shortcode posts (btimeline post type)."
+msgstr ""
+
+#: admin/Components/Settings.js:47
+#: build/admin-dashboard.js:1
+msgid "Plugin settings and configurations."
+msgstr ""
+
+#: admin/Components/Settings.js:51
+#: build/admin-dashboard.js:1
+msgid "⚠️ This action cannot be undone. Your data will be safe if you only deactivate the plugin."
+msgstr ""
+
+#: admin/Components/Settings.js:63
+#: build/admin-dashboard.js:1
+msgid "Data will be deleted on uninstall"
+msgstr ""
+
+#: admin/Components/Settings.js:64
+#: build/admin-dashboard.js:1
+msgid "Data will be preserved on uninstall"
 msgstr ""

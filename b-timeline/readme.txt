@@ -1,38 +1,37 @@
-=== Timeline – Vertical and Horizontal Timeline Layouts ===
-Contributors: bplugins, shehabulislam, taninrahman, prosanta10
+=== Timeline – Tell Your Story Through Events and Milestones ===
+Contributors: bplugins, shehabulislam, prosanta10
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
-Requires at least: 6.2
-Tested up to: 6.9
-Stable tag: 2.0.2
-Requires PHP: 7.1
+Tested up to: 7.1
+Stable tag: 2.0.3
+Requires PHP: 7.4
+Requires at least: 6.5
 Donate link: https://www.buymeacoffee.com/abuhayat
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create stunning vertical or horizontal timelines to showcase stories, events, milestones, and memories on any WordPress site — no coding needed.
+Create stunning vertical or horizontal timelines to showcase stories, events, milestones, and memories on any WordPress site – no coding needed.
 
- 
 == Description ==
 
-**The Most User-Friendly Timeline Plugin for WordPress – Loved by Thousands.**
+**Turn your history, roadmap, or event schedule into a beautiful interactive timeline visitors can follow at a glance – no code required.**
 
-Timeline makes it effortless to create responsive, customizable, and interactive timelines that fit perfectly inside posts, pages, and widgets.
-Whether you're displaying a personal journey, company history, project milestones, or event schedules —  Timeline gives you complete visual storytelling freedom.
+[**Timeline**](https://bplugins.com/products/b-timeline/) | [**Pricing**](https://bplugins.com/products/b-timeline/pricing) | [**Support**](https://bplugins.com/support/) | [**Live Demo**](https://bplugins.com/products/b-timeline/#demos)
 
-The plugin offers vertical and horizontal layouts, supports start alignment, custom HTML titles, and includes a powerful shortcode generator for quick embedding.
+### Why Timeline?
 
-Choose the layout you like, add timeline items, customize the visuals — and publish. No hassle. No technical knowledge required.
+**Timeline** makes it effortless to create responsive, customizable, and interactive timelines that fit perfectly inside posts, pages, and widgets. Whether you're displaying a personal journey, company history, project milestones, or event schedules, Timeline gives you complete visual storytelling freedom.
 
-[**Timeline**](https://bplugins.com/products/b-timeline/) | [**Pricing**](https://bplugins.com/products/b-timeline/pricing) | [**Support**](https://bplugins.com/support/) | [**Demo**](https://bplugins.com/products/b-timeline/#demos)
+The plugin offers vertical and horizontal layouts, supports start alignment, custom HTML titles, and includes a powerful shortcode generator for quick embedding. Choose the layout you like, add timeline items, customize the visuals – and publish. No hassle. No technical knowledge required.
 
-==  Key Features  ==
-- **Vertical & Horizontal Layouts**: Easily switch between vertical and horizontal timelines with a single click.
-- **Start Index Control**: Choose whether your timeline begins from the left, right, top, or bottom.
-- **Visible Item Limit (Horizontal)**: Select how many items should appear at once for better usability.
-- **HTML Support in Timeline Titles**: Add icons, bold text, or any HTML tags inside your titles.
-- **Responsive & Mobile Friendly**: Timelines automatically adapt to all screen sizes..
-- **Shortcode Generator**: Quickly embed a timeline anywhere using shortcode.
-- **Lightweight & Fast**: Clean code, optimized performance, and minimal footprint.
+### Free Features
+
+- **Vertical & Horizontal Layouts:** Switch between vertical and horizontal timelines with a single click.
+- **Start Index Control:** Choose whether your timeline begins from the left, right, top, or bottom.
+- **Visible Item Limit (Horizontal):** Select how many items appear at once for better usability.
+- **HTML Support in Timeline Titles:** Add icons, bold text, or any HTML tags inside your titles.
+- **Responsive & Mobile Friendly:** Timelines automatically adapt to all screen sizes.
+- **Shortcode Generator:** Quickly embed a timeline anywhere using a shortcode.
+- **Lightweight & Fast:** Clean code, optimized performance, and minimal footprint.
 
 ==  Pro Features   ==
 Upgrade to **Timeline Pro** and access advanced customization, premium themes, and interactive editing options.
@@ -47,7 +46,10 @@ Upgrade to **Timeline Pro** and access advanced customization, premium themes, a
 - **Customizable Icons**:  Add icons to timeline items and style them exactly how you want.
 - **Enhanced Layout Controls**:  Adjust every detail for a polished, professional timeline.
 - **Animation**: Add animation to your timeline items.
-- **Enhanced Customization Options**: Fine-tune every aspect of your timeline for ultimate design control.
+- **Dynamic Post Timeline block**: create timelines dynamically from any custom post type, filtered by taxonomy, terms, and author.
+- **Accordion Timeline block**: collapsible groups of steps with custom status markers and interactive toggle.
+- **Company History Timeline block**: interactive year card with clickable year rail and auto-slide navigation.
+- **new feature blocks**: Career Timeline, Media Story Timeline, Event Schedule, Roadmap Timeline, and Year Navigator.
 
 
 👉 **[Upgrade to PRO](https://bplugins.com/products/b-timeline/pricing)**
@@ -69,9 +71,8 @@ That’s it — your timeline is live!
 Personal milestones & life stories
 
 * Company history timeline
-* Personal milestones and life stories  
 * Event & conference schedules
-* Product roadmaps and development progress  
+* Project roadmap
 * Product evolution
 * Educational course chapters
 * Portfolio storytelling
@@ -136,6 +137,14 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 
 == Changelog ==
+
+= 2.0.3 - 02 September 2026 =
+* **Fixed:** Mobile layout no longer depends on JavaScript alone — the stacked layout is now defined in CSS at the 600px breakpoint.
+* **Update:** Add Live Preview in Settings Page
+* Add New Dynamic Post Timeline block (Pro) — create timelines dynamically from any custom post type, filtered by taxonomy, terms, and author (Pro).
+* Add New Accordion Timeline block (Pro) — collapsible groups of steps with custom status markers and interactive toggle (Pro).
+* Add New Company History Timeline block (Pro) — interactive year card with clickable year rail and auto-slide navigation (Pro).
+* Add New new feature blocks including Career Timeline (Pro), Media Story Timeline (Pro), Event Schedule (Pro), Roadmap Timeline (Pro), and Year Navigator (Pro).
 
 = 2.0.2 - 13 April 2026 =
 * **Update:** Premium Version- Add animation options and two new theme.
@@ -208,3 +217,4 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 = 2.0.0 - 25 January 2026 = 
 * Improve timeline functionality & perfomance.
+

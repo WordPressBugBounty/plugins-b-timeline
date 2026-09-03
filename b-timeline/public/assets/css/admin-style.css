@@ -86,3 +86,20 @@
     display: none;
   }
 }
+
+/* Style for Help & Demos admin menu item */
+#adminmenu .wp-submenu a .bptl-menu-highlight,
+#adminmenu a[href="edit.php?post_type=btimeline&page=dashboard"] {
+  color: #FF8D28 !important;
+  font-weight: 600;
+}
+
+#adminmenu .wp-submenu a:hover .bptl-menu-highlight,
+#adminmenu .wp-submenu a:focus .bptl-menu-highlight,
+#adminmenu .wp-submenu li.current a .bptl-menu-highlight,
+#adminmenu a[href="edit.php?post_type=btimeline&page=dashboard"]:hover,
+#adminmenu a[href="edit.php?post_type=btimeline&page=dashboard"]:focus,
+#adminmenu li.current a[href="edit.php?post_type=btimeline&page=dashboard"] {
+  color: #FF8D28 !important;
+}
+

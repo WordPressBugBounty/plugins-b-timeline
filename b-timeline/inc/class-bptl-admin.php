@@ -21,6 +21,45 @@ if(!class_exists('BTimelineAdmin')){
             add_filter('admin_footer_text', [__CLASS__, 'admin_footer']);
             add_action('admin_enqueue_scripts', [__CLASS__, 'admin_style']);
             add_action('admin_menu', [__CLASS__, 'add_help_pages']);
+            add_filter('get_user_option_meta-box-order_btimeline', [__CLASS__, 'force_meta_box_order']);
+        }
+
+        /**
+         * Keep "Timeline Configuration" above "Live Preview".
+         *
+         * The metabox priorities (high / low) only decide the order while the
+         * user has never dragged a metabox on this screen. As soon as an order
+         * is stored, WordPress moves every box into the "sorted" priority in
+         * that stored sequence and ignores the registered priorities, which can
+         * leave the preview sitting on top. Re-position just these two boxes
+         * and leave the rest of the stored order untouched.
+         */
+        public static function force_meta_box_order($order) {
+            if (!is_array($order) || empty($order)) {
+                return $order;
+            }
+
+            $config  = '_bptimeline_';
+            $preview = '_bptimeline_live_preview_';
+
+            foreach ($order as $context => $ids) {
+                if (!is_string($ids)) {
+                    continue;
+                }
+                $kept = array();
+                foreach (explode(',', $ids) as $id) {
+                    $id = trim($id);
+                    if ($id !== '' && $id !== $config && $id !== $preview) {
+                        $kept[] = $id;
+                    }
+                }
+                $order[$context] = implode(',', $kept);
+            }
+
+            $normal = (isset($order['normal']) && $order['normal'] !== '') ? explode(',', $order['normal']) : array();
+            $order['normal'] = implode(',', array_merge(array($config), $normal, array($preview)));
+
+            return $order;
         }
 
         public static function register_post_type() {
@@ -149,8 +188,10 @@ if(!class_exists('BTimelineAdmin')){
             wp_enqueue_style('bptl-admin-style');
         
             if ("btimeline_page_dashboard" === $hook) {
-                $asset_file = include BPTL_PLUGIN_PATH . 'build/admin-dashboard.asset.php'; 
-                wp_enqueue_script('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.js', array_merge($asset_file['dependencies'], ['wp-util']), BPTL_VER, true);
+                $asset_path = BPTL_PLUGIN_PATH . 'build/admin-dashboard.asset.php';
+                $asset_file = file_exists($asset_path) ? include $asset_path : [];
+                $dependencies = (is_array($asset_file) && isset($asset_file['dependencies'])) ? $asset_file['dependencies'] : [];
+                wp_enqueue_script('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.js', array_merge($dependencies, ['wp-util']), BPTL_VER, true);
                 wp_enqueue_style('bptl-admin-dashboard', BPTL_PLUGIN_DIR . '/build/admin-dashboard.css', [], BPTL_VER);
                 wp_set_script_translations('bptl-admin-dashboard', 'b-timeline', BPTL_PLUGIN_DIR . 'languages');
             }
@@ -160,7 +201,7 @@ if(!class_exists('BTimelineAdmin')){
             add_submenu_page(
                 'edit.php?post_type=btimeline', 
                 __('Help & Demos', 'b-timeline'), 
-                __('Help & Demos', 'b-timeline'),  
+                '<span class="bptl-menu-highlight">' . esc_html__('Help & Demos', 'b-timeline') . '</span>',  
                 'manage_options',  
                 'dashboard',   
                 [__CLASS__, 'render_dashboard']   
@@ -174,7 +215,13 @@ if(!class_exists('BTimelineAdmin')){
 					'version' => BPTL_VER,
 					'isPremium' => false,
 					'hasPro' => false,
-					// 'nonce' => wp_create_nonce( 'apbCreatePage' ),
+					'adminUrl' => admin_url(),
+					'deleteDataOnUninstall' => BPTLSettings::get_options()['delete_data_on_uninstall'],
+					'uninstallNonce' => wp_create_nonce( 'bptlSaveUninstallOption' ),
+					// Feeds the Blocks tab (see useBlocksSettings) — without these the
+					// tab fires an action-less admin-ajax request and never persists.
+					'nonce' => wp_create_nonce( 'bptl_admin_nonce' ),
+					'action' => 'bptl_get_blocks',
 					// 'licenseActiveNonce' => wp_create_nonce( 'bPlLicenseActivation' )
 				] ) ); ?>'>
             </div>

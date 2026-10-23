@@ -1,5 +1,5 @@
 === Timeline – Tell Your Story Through Events and Milestones ===
-Contributors: bplugins, shehabulislam, prosanta10
+Contributors: bplugins, abuhayat, prosanta10
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
 Tested up to: 7.1
 Stable tag: 2.0.3
@@ -17,7 +17,7 @@ Create stunning vertical or horizontal timelines to showcase stories, events, mi
 
 [**Timeline**](https://bplugins.com/products/b-timeline/) | [**Pricing**](https://bplugins.com/products/b-timeline/pricing) | [**Support**](https://bplugins.com/support/) | [**Live Demo**](https://bplugins.com/products/b-timeline/#demos)
 
-### Why Timeline?
+### Why Use Timeline?
 
 **Timeline** makes it effortless to create responsive, customizable, and interactive timelines that fit perfectly inside posts, pages, and widgets. Whether you're displaying a personal journey, company history, project milestones, or event schedules, Timeline gives you complete visual storytelling freedom.
 
@@ -33,26 +33,67 @@ The plugin offers vertical and horizontal layouts, supports start alignment, cus
 - **Shortcode Generator:** Quickly embed a timeline anywhere using a shortcode.
 - **Lightweight & Fast:** Clean code, optimized performance, and minimal footprint.
 
-==  Pro Features   ==
-Upgrade to **Timeline Pro** and access advanced customization, premium themes, and interactive editing options.
+### Timeline Pro Features
 
-**What’s Included in the Pro Version?**
+Upgrade to [**Timeline Pro**](https://bplugins.com/products/b-timeline/pricing) for advanced timeline layouts, Gutenberg blocks, themes, animations, and dynamic content.
 
-- **Powerful Gutenberg Block**: Build and customize timelines visually inside the Block Editor.
-- **Nine Extra Themes**: Professionally designed templates including dual-orientation themes.
-- **Classic Editor for Descriptions**: Format descriptions beautifully with rich text support.
-- **Customizable Icons**:  Add icons to timeline items and style them exactly how you want.
-- **Advanced Styling Options**:  Add icons to timeline items and style them exactly how you want.
-- **Customizable Icons**:  Add icons to timeline items and style them exactly how you want.
-- **Enhanced Layout Controls**:  Adjust every detail for a polished, professional timeline.
+= Pro Features =
+
+- **35+ Ready-Made Templates**: Start with pre-designed timeline layouts.
+- **Eight Extra Themes**: Access Eight more professionally designed themes, some themes supporting both horizontal and vertical layouts.
+- **Classic Editor for Descriptions**: Edit timeline descriptions beautifully with the integrated classic editor, providing advanced formatting options.
+- **Customizable Icons**: Add unique icons to your timeline items and style them to create a polished, professional look.
+- **Enhanced Customization Options**: Fine-tune every aspect of your timeline for ultimate design control.
 - **Animation**: Add animation to your timeline items.
-- **Dynamic Post Timeline block**: create timelines dynamically from any custom post type, filtered by taxonomy, terms, and author.
-- **Accordion Timeline block**: collapsible groups of steps with custom status markers and interactive toggle.
-- **Company History Timeline block**: interactive year card with clickable year rail and auto-slide navigation.
-- **new feature blocks**: Career Timeline, Media Story Timeline, Event Schedule, Roadmap Timeline, and Year Navigator.
+- **Dynamic Post Timeline Block**: Build automated timelines dynamically from any WordPress post type, filtered by taxonomy terms and author.
+- **Accordion Timeline Block**: Group collapsible timeline steps with custom status markers, icon choices, and smooth interactive expand/collapse toggles.
+- **Company History Timeline Block**: Feature a spotlit year card with a clickable year rail and optional auto-slide carousel navigation.
+- **Career Timeline Block**: Showcase work experience, education, and career achievements with specialized timeline layouts.
+- **Media Story Timeline Block**: Display rich media stories combining images, video highlights, and narrative timelines.
+- **Event Schedule Block**: Present event agendas, schedules, and multi-track session timelines clearly.
+- **Roadmap Timeline Block**: Organize product releases, project phases, and strategic milestones into clean roadmap views.
+- **Year Navigator Block**: Navigate historical timelines effortlessly year-by-year.
+- **AI Content Generator**: Generate timeline items, titles, and descriptions instantly using integrated AI tools.
+- **Load More Feature**: Add a customizable Load More button with initial item counts, per-click reveal limits, and custom styling.
+- **Add Shortcode API**: Embed timelines anywhere using a powerful shortcode system.
+- **Slideshow Timeline Block**: Create slideshow timelines with autoplay and navigation controls.
+- **History Slider**: Create history timeline slider with autoplay and navigation controls.
+- **Story Slider**: Create story timeline slider with autoplay and navigation controls.
 
 
 👉 **[Upgrade to PRO](https://bplugins.com/products/b-timeline/pricing)**
+
+### Gutenberg and Dynamic Content
+
+Gutenberg Timeline Block: Build and customize timelines inside the WordPress Block Editor. Dynamic Post Timeline: Generate timelines from WordPress post types, including custom post types, with supported taxonomy, term, and author filters.
+
+Shortcode Support: Embed supported timelines in different areas of your website.
+
+### Timeline Use Cases
+
+**Company History**
+Show company milestones, growth, important dates, and achievements.
+
+**Project Roadmap**
+Display product releases, development phases, project milestones, and future plans.
+
+**Event Schedule**
+Present conferences, meetings, workshops, sessions, and event agendas.
+
+**Personal Timeline**
+Create a visual biography, life story, career journey, or personal milestones timeline.
+
+**Career Timeline**
+Show education, employment history, professional achievements, and career progression.
+
+**Product Timeline**
+Display product development, releases, updates, and product evolution.
+
+**Educational Timeline**
+Organize lessons, course chapters, academic milestones, and learning progress.
+
+**Portfolio Timeline**
+Show design processes, development stages, project history, and creative work.
 
 
 == 🎯 How to Use Timeline – Quick Start Guide == 
@@ -66,16 +107,19 @@ Upgrade to **Timeline Pro** and access advanced customization, premium themes, a
 That’s it — your timeline is live!
 
 
-=== Use Cases ===
+### How to Create a Timeline with Gutenberg
 
-Personal milestones & life stories
+The Pro version includes a Gutenberg Timeline block.
 
-* Company history timeline
-* Event & conference schedules
-* Project roadmap
-* Product evolution
-* Educational course chapters
-* Portfolio storytelling
+1. Install and activate **Timeline Pro**.
+2. Open a post or page in the WordPress Block Editor.
+3. Click the **+** button.
+4. Search for **Timeline**.
+5. Add the Timeline block.
+6. Add your timeline content.
+7. Customize the available layout and styling options.
+8. Publish or update the page.
+
 
 == ⭐ Checkout our other WordPress Plugins- == 
 
@@ -93,12 +137,22 @@ Personal milestones & life stories
 
 This section describes how to install the plugin and get it working.
 
-e.g.
+### Install from WordPress
 
-1. Upload `plugin-directory` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Use shortcode in page, post or in widgets.
-4. If you want player in your theme php, Place `<?php echo do_shortcode('YOUR_SHORTCODE'); ?>` in your templates
+1. Go to **Plugins → Add New**.
+2. Search for **b timeline**.
+3. Click **Install Now**.
+4. Click **Activate**.
+5. Go to **Timeline → Add New**.
+6. Create and publish your timeline.
+
+### Manual Installation
+
+1. Download the Timeline plugin ZIP file.
+2. Go to **Plugins → Add New → Upload Plugin**.
+3. Upload the plugin ZIP file.
+4. Click **Install Now**.
+5. Activate the plugin from the **Plugins** screen.
 
 
 == Frequently Asked Questions ==
@@ -110,6 +164,18 @@ Yes, it will work with any standard WordPress theme.
 = How many times can I reuse a shortcode? =
 
 You can use unlimited times as you want.
+
+= Does Timeline support Gutenberg? =
+
+Yes. Timeline Pro includes a Gutenberg Timeline block for creating and customizing timelines directly in the WordPress Block Editor.
+
+= Can I create a timeline from WordPress posts? =
+
+Yes. Timeline Pro includes a Dynamic Post Timeline block that can generate timeline content from WordPress post types and filter content by taxonomy, terms, and author.
+
+= Can I add animations to timeline items? =
+
+Yes. Timeline Pro includes animation options for timeline items.
 
 = Where can I get support? =
 
@@ -138,7 +204,7 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 == Changelog ==
 
-= 2.0.3 - 02 September 2026 =
+= 2.0.3 - 03 September 2026 =
 * **Fixed:** Mobile layout no longer depends on JavaScript alone — the stacked layout is now defined in CSS at the 600px breakpoint.
 * **Update:** Add Live Preview in Settings Page
 * Add New Dynamic Post Timeline block (Pro) — create timelines dynamically from any custom post type, filtered by taxonomy, terms, and author (Pro).
@@ -217,4 +283,3 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 = 2.0.0 - 25 January 2026 = 
 * Improve timeline functionality & perfomance.
-

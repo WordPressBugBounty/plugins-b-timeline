@@ -17,6 +17,10 @@ Create stunning vertical or horizontal timelines to showcase stories, events, mi
 
 [**Timeline**](https://bplugins.com/products/b-timeline/) | [**Pricing**](https://bplugins.com/products/b-timeline/pricing) | [**Support**](https://bplugins.com/support/) | [**Live Demo**](https://bplugins.com/products/b-timeline/#demos)
 
+Timeline is a WordPress timeline plugin that helps you present events, milestones, and stories in an organized visual layout. Create vertical or horizontal timelines, customize their settings, and embed them in your website using shortcodes.
+
+Whether you want to share your company's journey, display a project roadmap, present an event schedule, or highlight personal milestones, Timeline helps visitors follow your story at a glance.
+
 ### Why Use Timeline?
 
 **Timeline** makes it effortless to create responsive, customizable, and interactive timelines that fit perfectly inside posts, pages, and widgets. Whether you're displaying a personal journey, company history, project milestones, or event schedules, Timeline gives you complete visual storytelling freedom.

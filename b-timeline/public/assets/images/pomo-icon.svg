@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Horizontal timeline icon: a glass panel with a progress marker traveling a roadmap of milestones">
+  <title>Timeline — horizontal roadmap</title>
+  <defs>
+    <linearGradient id="btlBgB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF7A00"/>
+      <stop offset="1" stop-color="#D5840E"/>
+    </linearGradient>
+    <linearGradient id="btlTrackB" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFF3E0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <radialGradient id="btlGlowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE1B8" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFE1B8" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="btlClipB"><rect x="0" y="0" width="256" height="256" rx="56"/></clipPath>
+  </defs>
+
+  <style>
+    :root { --btl: 3.6s; }
+    .btl-fill  { transform-box: fill-box; transform-origin: 0% 50%; animation: btlFill var(--btl) linear infinite; }
+    .btl-mark  { animation: btlMark var(--btl) linear infinite; }
+    .btl-b1 { transform-box: fill-box; transform-origin: 50% 50%; animation: btlB1 var(--btl) ease-out infinite; }
+    .btl-b2 { transform-box: fill-box; transform-origin: 50% 50%; animation: btlB2 var(--btl) ease-out infinite; }
+    .btl-b3 { transform-box: fill-box; transform-origin: 50% 50%; animation: btlB3 var(--btl) ease-out infinite; }
+    .btl-b4 { transform-box: fill-box; transform-origin: 50% 50%; animation: btlB4 var(--btl) ease-out infinite; }
+
+    @keyframes btlFill {
+      0%   { transform: scaleX(0);  opacity: .95; }
+      8%   { transform: scaleX(.06);}
+      74%  { transform: scaleX(1);  opacity: .95; }
+      88%  { transform: scaleX(1);  opacity: 0; }
+      100% { transform: scaleX(0);  opacity: 0; }
+    }
+    @keyframes btlMark {
+      0%   { transform: translateX(0);    opacity: 0; }
+      8%   { transform: translateX(8px);  opacity: 1; }
+      74%  { transform: translateX(136px);opacity: 1; }
+      86%  { transform: translateX(136px);opacity: 0; }
+      100% { transform: translateX(0);    opacity: 0; }
+    }
+    @keyframes btlB1 { 0%{opacity:0;transform:scale(.6)} 8%{opacity:1;transform:scale(1.2)} 14%{transform:scale(1)} 86%{opacity:1} 93%{opacity:0} 100%{opacity:0} }
+    @keyframes btlB2 { 0%{opacity:0} 28%{opacity:0;transform:scale(.6)} 34%{opacity:1;transform:scale(1.2)} 40%{transform:scale(1)} 86%{opacity:1} 93%{opacity:0} 100%{opacity:0} }
+    @keyframes btlB3 { 0%{opacity:0} 48%{opacity:0;transform:scale(.6)} 54%{opacity:1;transform:scale(1.2)} 60%{transform:scale(1)} 86%{opacity:1} 93%{opacity:0} 100%{opacity:0} }
+    @keyframes btlB4 { 0%{opacity:0} 68%{opacity:0;transform:scale(.6)} 74%{opacity:1;transform:scale(1.2)} 80%{transform:scale(1)} 86%{opacity:1} 93%{opacity:0} 100%{opacity:0} }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btl-fill { animation: none; transform: scaleX(.62); opacity: .95; }
+      .btl-mark { animation: none; transform: translateX(84px); opacity: 1; }
+      .btl-b1,.btl-b2,.btl-b3 { animation: none; opacity: 1; transform: scale(1); }
+      .btl-b4 { animation: none; opacity: 0; }
+    }
+  </style>
+
+  <g clip-path="url(#btlClipB)">
+    <rect width="256" height="256" fill="url(#btlBgB)"/>
+    <ellipse cx="128" cy="150" rx="150" ry="140" fill="url(#btlGlowB)"/>
+    <circle cx="58" cy="52" r="72" fill="#FFFFFF" opacity="0.09"/>
+
+    <!-- glass panel -->
+    <rect x="30" y="72" width="196" height="112" rx="24" fill="#FFFFFF" opacity="0.15"/>
+    <rect x="30.5" y="72.5" width="195" height="111" rx="23.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="30" y="72" width="196" height="46" rx="24" fill="#FFFFFF" opacity="0.06"/>
+
+    <!-- milestone chips + connectors -->
+    <g fill="#FFFFFF">
+      <rect x="50"  y="92" width="36" height="15" rx="4" opacity="0.85"/>
+      <rect x="94"  y="92" width="36" height="15" rx="4" opacity="0.85"/>
+      <rect x="138" y="92" width="36" height="15" rx="4" opacity="0.85"/>
+      <rect x="182" y="92" width="36" height="15" rx="4" opacity="0.85"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="3">
+      <line x1="68"  y1="107" x2="68"  y2="140"/>
+      <line x1="112" y1="107" x2="112" y2="140"/>
+      <line x1="156" y1="107" x2="156" y2="140"/>
+      <line x1="200" y1="107" x2="200" y2="140"/>
+    </g>
+
+    <!-- track -->
+    <rect x="60" y="146" width="140" height="7" rx="3.5" fill="#FFFFFF" opacity="0.34"/>
+    <rect class="btl-fill" x="60" y="146" width="140" height="7" rx="3.5" fill="url(#btlTrackB)"/>
+
+    <!-- milestone base dots -->
+    <g fill="#FFFFFF" opacity="0.4">
+      <circle cx="68"  cy="149.5" r="6"/>
+      <circle cx="112" cy="149.5" r="6"/>
+      <circle cx="156" cy="149.5" r="6"/>
+      <circle cx="200" cy="149.5" r="6"/>
+    </g>
+    <!-- milestone bright dots -->
+    <g class="btl-b1"><circle cx="68"  cy="149.5" r="7.5" fill="#FFFFFF"/><circle cx="68"  cy="149.5" r="3.4" fill="#E8720A"/></g>
+    <g class="btl-b2"><circle cx="112" cy="149.5" r="7.5" fill="#FFFFFF"/><circle cx="112" cy="149.5" r="3.4" fill="#E8720A"/></g>
+    <g class="btl-b3"><circle cx="156" cy="149.5" r="7.5" fill="#FFFFFF"/><circle cx="156" cy="149.5" r="3.4" fill="#E8720A"/></g>
+    <g class="btl-b4"><circle cx="200" cy="149.5" r="7.5" fill="#FFFFFF"/><circle cx="200" cy="149.5" r="3.4" fill="#E8720A"/></g>
+
+    <!-- traveling marker -->
+    <g transform="translate(60,149.5)">
+      <g class="btl-mark">
+        <circle r="12" fill="#FFFFFF" opacity="0.35"/>
+        <circle r="7" fill="#FFFFFF"/>
+        <circle r="3" fill="#E8720A"/>
+      </g>
+    </g>
+  </g>
+</svg>

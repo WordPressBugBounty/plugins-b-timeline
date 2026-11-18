@@ -2,23 +2,24 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Timeline 2.0.3\n"
+"Project-Id-Version: Timeline 2.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/b-timeline\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-31T11:27:04+00:00\n"
+"POT-Creation-Date: 2026-11-18T10:18:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: b-timeline\n"
 
 #. Plugin Name of the plugin
 #: b-titmeline.php
-#: inc/class-bptl-admin.php:35
-#: inc/class-bptl-admin.php:36
-#: inc/class-bptl-admin.php:37
+#: inc/class-bptl-admin.php:74
+#: inc/class-bptl-admin.php:75
+#: inc/class-bptl-admin.php:76
+#: inc/class-bptl-promo-banner.php:493
 msgid "Timeline"
 msgstr ""
 
@@ -42,45 +43,49 @@ msgstr ""
 msgid "http://bplugins.com"
 msgstr ""
 
-#: inc/class-bptl-admin.php:36
-#: inc/class-bptl-admin.php:43
+#: inc/class-bpl-promo-link.php:115
+msgid "Black Friday Sale – Up to 45% OFF!"
+msgstr ""
+
+#: inc/class-bptl-admin.php:75
+#: inc/class-bptl-admin.php:82
 msgid "Timeline  - Lagacy"
 msgstr ""
 
-#: inc/class-bptl-admin.php:38
+#: inc/class-bptl-admin.php:77
 msgid "Add New"
 msgstr ""
 
-#: inc/class-bptl-admin.php:39
+#: inc/class-bptl-admin.php:78
 msgid "Add New "
 msgstr ""
 
-#: inc/class-bptl-admin.php:40
+#: inc/class-bptl-admin.php:79
 msgid "New Timeline "
 msgstr ""
 
-#: inc/class-bptl-admin.php:41
+#: inc/class-bptl-admin.php:80
 msgid "Edit Timeline "
 msgstr ""
 
-#: inc/class-bptl-admin.php:42
+#: inc/class-bptl-admin.php:81
 msgid "View Timeline "
 msgstr ""
 
-#: inc/class-bptl-admin.php:43
+#: inc/class-bptl-admin.php:82
 msgid "All Timeline"
 msgstr ""
 
-#: inc/class-bptl-admin.php:48
+#: inc/class-bptl-admin.php:87
 msgid "Timeline Options."
 msgstr ""
 
-#: inc/class-bptl-admin.php:164
-#: inc/class-bptl-admin.php:165
+#: inc/class-bptl-admin.php:203
+#: inc/class-bptl-admin.php:204
 msgid "Help & Demos"
 msgstr ""
 
-#: inc/class-bptl-admin.php:195
+#: inc/class-bptl-admin.php:234
 #, php-format
 msgid "If you like <strong> Timeline </strong> please leave us a <a href=\"%s\" target=\"_blank\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. Your Review is very important to us as it helps us to grow more. "
 msgstr ""
@@ -94,8 +99,48 @@ msgstr ""
 msgid "Permission denied"
 msgstr ""
 
-#: inc/class-bptl-options.php:712
+#: inc/class-bptl-options.php:717
 msgid "Unsaved settings are shown here as visitors would see them. Nothing is saved until you press Update."
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:502
+msgid "Timeline Biggest Black Friday Sale is Live – Up to 45% OFF!"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:505
+msgid "Upgrade to Timeline Pro at an exclusive Black Friday price! Unlock a powerful Gutenberg block, 9 extra themes, dynamic post timelines, custom icons, animations, and advanced styling!"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:508
+msgid "9 Extra Timeline Themes"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:509
+msgid "Dynamic Post & Accordion Timeline"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:510
+msgid "Company History & Roadmap Blocks"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:511
+msgid "Custom Icons & Animations"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:512
+msgid "Advanced Styling & Layout Controls"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:518
+msgid "Unlock PRO Features →"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:525
+msgid "Dismiss"
+msgstr ""
+
+#: inc/class-bptl-promo-banner.php:526
+msgid "Dismiss banner"
 msgstr ""
 
 #: inc/class-bptl-settings.php:38

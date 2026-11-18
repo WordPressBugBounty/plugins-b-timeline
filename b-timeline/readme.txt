@@ -2,7 +2,7 @@
 Contributors: bplugins, abuhayat, prosanta10
 Tags: timeline, vertical timeline, horizontal timeline, roadmap, storytelling
 Tested up to: 7.1
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 Requires PHP: 7.4
 Requires at least: 6.5
 Donate link: https://www.buymeacoffee.com/abuhayat
@@ -17,9 +17,11 @@ Create stunning vertical or horizontal timelines to showcase stories, events, mi
 
 [**Timeline**](https://bplugins.com/products/b-timeline/) | [**Pricing**](https://bplugins.com/products/b-timeline/pricing) | [**Support**](https://bplugins.com/support/) | [**Live Demo**](https://bplugins.com/products/b-timeline/#demos)
 
-Timeline is a WordPress timeline plugin that helps you present events, milestones, and stories in an organized visual layout. Create vertical or horizontal timelines, customize their settings, and embed them in your website using shortcodes.
+Timeline helps you create and display organized vertical and horizontal timelines on your WordPress website. Present important dates, milestones, events, and stories in a visual format that visitors can follow easily.
 
-Whether you want to share your company's journey, display a project roadmap, present an event schedule, or highlight personal milestones, Timeline helps visitors follow your story at a glance.
+With the free Timeline plugin, you can create vertical or horizontal timelines, control the starting position, choose how many horizontal items appear, customize timeline titles with HTML, and embed your timelines using shortcodes.
+
+Need more advanced timeline layouts? Timeline Pro adds Gutenberg timeline blocks, ready-made templates, animations, dynamic WordPress post timelines, and specialized layouts for company histories, careers, events, product roadmaps, and more.
 
 ### Why Use Timeline?
 
@@ -43,7 +45,7 @@ Upgrade to [**Timeline Pro**](https://bplugins.com/products/b-timeline/pricing) 
 
 = Pro Features =
 
-- **35+ Ready-Made Templates**: Start with pre-designed timeline layouts.
+- **45+ Ready-Made Templates**: Start with pre-designed timeline layouts.
 - **Eight Extra Themes**: Access Eight more professionally designed themes, some themes supporting both horizontal and vertical layouts.
 - **Classic Editor for Descriptions**: Edit timeline descriptions beautifully with the integrated classic editor, providing advanced formatting options.
 - **Customizable Icons**: Add unique icons to your timeline items and style them to create a polished, professional look.
@@ -63,6 +65,7 @@ Upgrade to [**Timeline Pro**](https://bplugins.com/products/b-timeline/pricing) 
 - **Slideshow Timeline Block**: Create slideshow timelines with autoplay and navigation controls.
 - **History Slider**: Create history timeline slider with autoplay and navigation controls.
 - **Story Slider**: Create story timeline slider with autoplay and navigation controls.
+- **Interactive Story Timeline**: Create interactive story timelines.
 
 
 👉 **[Upgrade to PRO](https://bplugins.com/products/b-timeline/pricing)**
@@ -99,6 +102,26 @@ Organize lessons, course chapters, academic milestones, and learning progress.
 **Portfolio Timeline**
 Show design processes, development stages, project history, and creative work.
 
+
+### Interactive Story Timeline (Pro)
+
+Create interactive, media-rich stories using a zoomable timeline with groups and eras. 
+
+ - Pro features include:
+ - Large media slides.
+ - Zoomable, to-scale timeline navigation.
+ - Timeline groups and eras.
+ - Story Timeline JSON and CSV import.
+ - JSON export.
+ - BCE date support.
+ - Slide links.
+ - Keyboard and swipe navigation.
+
+## Happy User of B Timeline? ## 
+
+- Join our [Facebook Community Group](https://www.facebook.com/share/g/18kgVFabgK/)
+- Learn from our tutorials on [YouTube Channel](https://www.youtube.com/@bplugins)
+- Or rate [B Timeline](https://wordpress.org/support/plugin/b-timeline/reviews/#new-post) on WordPress 
 
 == 🎯 How to Use Timeline – Quick Start Guide == 
 
@@ -207,6 +230,10 @@ Please report security bugs found in the source code of the Timeline – Create 
 
 
 == Changelog ==
+
+= 2.0.4 - 18 November 2026 =
+* **Added:** Black Friday discount promo banner on the Help & Demos, All Timeline and Add New Timeline screens.
+* **Added:** Black Friday discount link in the Installed Plugins list.
 
 = 2.0.3 - 03 September 2026 =
 * **Fixed:** Mobile layout no longer depends on JavaScript alone — the stacked layout is now defined in CSS at the 600px breakpoint.
